@@ -22,8 +22,8 @@
 #ifdef ACTIVATE_SCRIPTING
 #include "msc-config.h"
 #endif
-#include "aplib.h"
-//#include "compress-ori.h"
+//#include "aplib.h"
+#include "compress.h"
 #include "pantallas.h"
 #ifdef COMPRESSED_LEVELS
 #include "levels.h"

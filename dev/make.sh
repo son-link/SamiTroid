@@ -4,8 +4,7 @@ echo -e "\e[32mCompilando $NAME"
 echo -e "Compilando script\e[0m"
 wine ../script/msc ../script/$NAME.spt msc.h 72
 echo -e "\e[32mComprimiendo imagenes\e[0m"
-rm ../gfx/title.rcs ../gfx/ending.rcs ../gfx/loading.rcs
-rm title.bin ending.bin loading.bin
+
 ../utils/png2rcs ../gfx/title.png ../gfx/title.rcs
 ../utils/png2rcs ../gfx/ending.png ../gfx/ending.rcs
 ../utils/png2rcs ../gfx/loading.png ../gfx/loading.rcs
@@ -40,9 +39,15 @@ MAYUS=$(echo $NAME | tr '[:lower:]' '[:upper:]')
 filesize=$(stat --printf="%s" $NAME.zx7)
 echo " define COMP_SIZE $filesize" > define.asm
 echo " define BORDER_LOADING 0" >> define.asm
+
 ../utils/sjasmplus asmloader.asm
 ../utils/gentape $NAME.tap \
 	basic "'SAMI'"  0 asmloader.bin \
 	data                $NAME.zx7
+
+echo -e "\e[32mSacando la basura\e[0m"
 rm $NAME.bin $NAME.zx7 define.asm asmloader.bin
+rm title.bin ending.bin loading.bin
+rm ../gfx/title.rcs ../gfx/ending.rcs ../gfx/loading.rcs
+
 echo -e "\e[32mCompilación terminada.\e[0m"
