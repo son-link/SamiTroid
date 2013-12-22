@@ -1,0 +1,16 @@
+# Título tonto
+# Copyleft 201X tu grupo roneón soft.
+# Churrera 3.1
+
+# flags:
+# 1	- La cantidad de huevos que hemos llevado hasta el criadero
+
+PRESS_FIRE ON SCREEN 35
+	IF PLAYER_IN_X 112, 143
+    IF PLAYER_IN_Y 128, 159
+    IF PLAYER_HAS_OBJECTS
+    THEN
+       DEC OBJECTS 1
+       INC FLAG 1, 1
+    END
+END

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Script bash para calcular la posición en pixeles entre zonas de una pantalla de un mapara de un juego de la churrera
+
+if [ $# == 4 ]; then
+	X1=$[$1*16]
+	X2=$[$2*16+15]
+	Y1=$[$3*16]
+	Y2=$[$4*16+15]
+	echo "Posición X: $X1, $X2"
+	echo "Posición Y: $Y1, $Y2"
+else
+	echo "Modo de uso:"
+	echo "$0 inicioX finX inicioY finY"
+fi
