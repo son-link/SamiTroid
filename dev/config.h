@@ -10,9 +10,11 @@
 
 #define MAP_W					8		//
 #define MAP_H					9		// Map dimmensions in screens
-#define SCR_INICIO				36		// Initial screen
-#define PLAYER_INI_X			8		//
-#define PLAYER_INI_Y			7		// Initial tile coordinates
+//#define SCR_INICIO				36		// Initial screen
+#define SCR_INICIO				71
+
+#define PLAYER_INI_X			7		//
+#define PLAYER_INI_Y			8		// Initial tile coordinates
 #define SCR_FIN 				99		// Last screen. 99 = deactivated.
 #define PLAYER_FIN_X			99		//
 #define PLAYER_FIN_Y			99		// Player tile coordinates to finish game
@@ -229,7 +231,7 @@
 // Save for 10 (special), but that's obvious, innit?
 #ifndef COMPRESSED_LEVELS
 unsigned char comportamiento_tiles [] = {
-	0, 8, 8, 8, 8, 8, 8, 0, 0, 8, 0, 0, 0, 0, 4, 10,
+	0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0, 0, 0, 4, 10,
 	0, 0, 0, 0, 0, 8, 0, 8, 8, 8, 8, 8, 8, 8, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0
 };
