@@ -9,6 +9,7 @@ You are Sami Troid, a spacial bodyhunter. The spacecraft XZ-388 is under attack.
 (c) 2013 Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 Under [Creative Commons 3.0 BY-NC-SA](http://creativecommons.org/licenses/by-nc-sa/3.0/) license
+
 **Metroid** is a trademark of **Nintendo of Europe GmbH**
 
 I recommend [Fuse Emulator](http://fuse-emulator.sourceforge.net/) for playing game on GNU/Linux, Windows, Mac and other plataforms and [ZXDS](http://zxds.raxoft.cz/) for Nintendo DS
@@ -23,8 +24,21 @@ Tu eres Sami Troid, una cazarecompensas espacial. La nave espacial ZX-388 esta s
 (c) 2013 Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 Bajo licencia [Creative Commons 3.0 BY-NC-SA](http://creativecommons.org/licenses/by-nc-sa/3.0/)
+
 **Metroid** es una marca registrada de **Nintendo of Europe GmbH**
 
 Recomiendo [Fuse Emulator](http://fuse-emulator.sourceforge.net/) para jugar al juego en GNU/Linux, Windows, Mac y otras plataformas y [ZXDS](http://zxds.raxoft.cz/) para jugar en la Nintendo DS
 
 Hilo oficial del juego en los foros de Mojon Twins: <http://www.mojontwins.com/mojoniaplus/viewtopic.php?f=9&t=1325>
+
+##Controls/Controles:
+
+* A: Left/Izquierda
+* C: Right/Derecha
+* S: Action/Acción
+* N: Jump/Salto
+* M: Shoot/Disparo
+
+**Note:** Sinclair and Kempston joystick don't work correctly.
+
+**Nota:** Los joystick Sinclair y Kempston no funcionan correctamente.
