@@ -1228,11 +1228,11 @@ void __FASTCALL__ draw_scr_background (void) {
   #endif
 #endif
 	srand (n_pant);
-	gpx = gpy = 0;	
+	gpx = gpy = 0;
 
 	// Draw 150 tiles
-	
-	for (gpit = 0; gpit < 150; gpit ++) {	
+
+	for (gpit = 0; gpit < 150; gpit ++) {
 #ifdef UNPACKED_MAP
 		// Mapa tipo UNPACKED
 		gpd = *map_pointer ++;
@@ -1271,13 +1271,12 @@ void __FASTCALL__ draw_scr_background (void) {
 	gpx = (hotspots [n_pant].xy >> 4);
 	gpy = (hotspots [n_pant].xy & 15);
 
-	if ((hotspots [n_pant].act == 1 && hotspots [n_pant].tipo) ||
-		(hotspots [n_pant].act == 0 && (rand () & 7) == 2)) {
-		hotspot_x = gpx << 4;
-		hotspot_y = gpy << 4;
-		orig_tile = map_buff [15 * gpy + gpx];
-		draw_coloured_tile (VIEWPORT_X + gpx + gpx, VIEWPORT_Y + gpy + gpy, 16 + (hotspots [n_pant].act ? hotspots [n_pant].tipo : 0));
-	}
+	if (hotspots [n_pant].act == 1 && hotspots [n_pant].tipo) {
+        hotspot_x = gpx << 4;
+        hotspot_y = gpy << 4;
+        orig_tile = map_buff [15 * gpy + gpx];
+        draw_coloured_tile (VIEWPORT_X + gpx + gpx, VIEWPORT_Y + gpy + gpy, 16 + (hotspots [n_pant].tipo != 3 ? hotspots [n_pant].tipo : 0));
+    }
 
 #ifndef DEACTIVATE_KEYS
 	// Open locks

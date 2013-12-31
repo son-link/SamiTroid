@@ -1,0 +1,549 @@
+--- music.h	2013-12-27 18:26:07.575664002 +0100
++++ music.h.ori	2013-12-25 20:33:52.868210962 +0100
+@@ -2,12 +2,12 @@
+ ; *****************************************************************************
+ ; * Phaser1 Engine, with synthesised drums
+ ; *
+-; * Original code by Shiru - .http://shiru.untergrund.net/
++; * Original code by Shiru - .http//shiru.untergrund.net/
+ ; * Modified by Chris Cowley
+ ; *
+-; * Produced by Beepola v1.06.01
++; * Produced by Beepola v1.05.01
+ ; ******************************************************************************
+-
++ 
+ .musicstart
+              LD    HL,MUSICDATA         ;  <- Pointer to Music Data. Change
+                                         ;     this to play a different song
+@@ -34,7 +34,8 @@
+ .player
+              DI
+              PUSH IY
+-             //LD   A,BORDER_COL
++             ;LD   A,BORDER_COL
++             xor a
+              LD   H,$00
+              LD   L,A
+              LD   (CNT_1A),HL
+@@ -53,7 +54,7 @@
+ ; * Select the next pattern in sequence (and handle looping if weve reached PATTERN_LOOP_END
+ ; * Execution falls through to PLAYNOTE to play the first note from our next pattern
+ ; ********************************************************************************************************
+-.next_patter
++.next_pattern
+                           LD   A,(PATTERN_PTR)
+                           INC  A
+                           INC  A
+@@ -135,7 +136,7 @@
+              LD   (CNT_1B),HL
+              JR   READ_LOOP
+ 
+-.set_note
++.set_note2
+              LD   (DIV_2),DE
+              LD   A,IYH
+              LD   HL,OUT_2
+@@ -243,7 +244,7 @@
+              JR   C,L8179
+              JR   L817B
+ .l8179       XOR  $10
+-.l817B       EX   AF,AF ; beware!
++.l817b       EX   AF,AF ; beware!
+              OUT  ($FE),A
+              EXX
+              ADD  HL,BC
+@@ -253,7 +254,7 @@
+ .l8186       NOP
+              JP   L818A
+ 
+-.l818A       EXX
++.l818a       EXX
+              EX   AF,AF ; beware!
+              ADD  HL,BC
+              OUT  ($FE),A
+@@ -378,6 +379,7 @@
+              LD   DE,3700
+              LD   BC,$0101
+              //LD   A,BORDER_COL
++             xor a
+ .dt_loop0    OUT  ($FE),A
+              DEC  B
+              JR   NZ,DT_LOOP1
+@@ -406,6 +408,7 @@
+              LD   H,D
+              LD   L,E
+              //LD   A,BORDER_COL
++             xor a
+              LD   C,A
+ .dn_loop0    LD   A,(HL)
+              AND  16
+@@ -421,7 +424,7 @@
+              JP   MAIN_LOOP
+ 
+ .pattern_addr   DEFW  $0000
+-.patter_ptr    DEFB  0
++.pattern_ptr    DEFB  0
+ .note_ptr       DEFW  $0000
+ 
+ ; **************************************************************
+@@ -444,342 +447,150 @@
+ 
+ .musicdata
+              DEFB 0  ; Pattern loop begin * 2
+-             DEFB 24  ; Song length * 2
+-             DEFW 12         ; Offset to start of song (length of instrument table)
++             DEFB 16  ; Song length * 2
++             DEFW 8         ; Offset to start of song (length of instrument table)
+              DEFB 1      ; Multiple
+-             DEFW 20      ; Detune
+-             DEFB 0      ; Phase
+-             DEFB 0      ; Multiple
+              DEFW 10      ; Detune
+-             DEFB 1      ; Phase
+-             DEFB 0      ; Multiple
+-             DEFW 15      ; Detune
+              DEFB 0      ; Phase
++             DEFB 1      ; Multiple
++             DEFW 5      ; Detune
++             DEFB 1      ; Phase
+ 
+-.patterndata        DEFW      PAT0
++.patterndata
++                    DEFW      PAT0
+                     DEFW      PAT1
+                     DEFW      PAT0
+                     DEFW      PAT1
+                     DEFW      PAT2
+                     DEFW      PAT3
+-                    DEFW      PAT4
+                     DEFW      PAT2
+                     DEFW      PAT3
+-                    DEFW      PAT4
+-                    DEFW      PAT5
+-                    DEFW      PAT5
+ 
+ ; *** Pattern data - $00 marks the end of a pattern ***
+ .pat0
+          DEFB $BD,0
+-         DEFB 164
+-         DEFB 140
+-         DEFB 125
+-     DEFB 19
+-         DEFB 188
+-     DEFB 10
+-         DEFB 190
+-         DEFB 188
+-     DEFB 10
+-         DEFB 173
++         DEFB 152
+          DEFB 140
+-         DEFB 125
+-     DEFB 19
+-         DEFB 188
+-     DEFB 10
+-         DEFB 190
+-         DEFB 188
+-     DEFB 10
+-         DEFB 167
++     DEFB 6
++         DEFB 157
+          DEFB 140
+-         DEFB 125
+-     DEFB 19
+-         DEFB 188
+-     DEFB 10
+-         DEFB 190
++     DEFB 6
++         DEFB 159
+          DEFB 188
+-     DEFB 10
+-         DEFB 190
++     DEFB 6
++         DEFB 152
+          DEFB 140
+-         DEFB 125
+-     DEFB 29
+-         DEFB 190
+-         DEFB 188
+-     DEFB 10
++     DEFB 6
++         DEFB 157
++     DEFB 6
++         DEFB 159
++     DEFB 6
++         DEFB 152
++     DEFB 6
++         DEFB 159
++     DEFB 6
++         DEFB 151
++         DEFB 139
++     DEFB 6
++         DEFB 157
++         DEFB 139
++     DEFB 6
++         DEFB 159
++         DEFB 188
++     DEFB 6
++         DEFB 151
++         DEFB 139
++     DEFB 6
++         DEFB 157
++     DEFB 6
++         DEFB 159
++     DEFB 6
++         DEFB 151
++     DEFB 6
++         DEFB 159
++     DEFB 6
+          DEFB $00
+ .pat1
+          DEFB $BD,0
+-         DEFB 164
+-         DEFB 140
+-         DEFB 125
+-     DEFB 19
+-         DEFB 188
+-     DEFB 10
+-         DEFB 190
+-         DEFB 188
+-     DEFB 10
+-         DEFB 175
+-         DEFB 140
+-         DEFB 125
+-     DEFB 19
+-         DEFB 188
+-     DEFB 10
+-         DEFB 190
+-         DEFB 188
+-     DEFB 10
+-         DEFB 173
+-         DEFB 140
+-         DEFB 125
+-     DEFB 19
+-         DEFB 188
+-     DEFB 10
+-         DEFB 190
+-         DEFB 188
+-     DEFB 10
+-         DEFB 190
+-         DEFB 140
+-         DEFB 125
+-     DEFB 29
+-         DEFB 190
+-         DEFB 188
+-     DEFB 10
+-         DEFB $00
+-.pat2
+-         DEFB $BD,2
+-         DEFB 171
+-         DEFB 152
+-         DEFB 118
+-     DEFB 4
+-         DEFB 190
+-         DEFB 124
+-     DEFB 4
+-         DEFB 159
+-         DEFB 159
+-         DEFB 118
+-     DEFB 4
+-         DEFB 169
+-         DEFB 164
+-         DEFB 126
+-     DEFB 4
+-         DEFB 190
+-         DEFB 124
+-     DEFB 4
+-         DEFB 159
+-         DEFB 118
+-     DEFB 4
+-         DEFB 168
+-         DEFB 152
+-         DEFB 118
+-     DEFB 4
+-         DEFB 190
+-         DEFB 118
+-     DEFB 4
++         DEFB 150
++         DEFB 138
++     DEFB 6
++         DEFB 157
++         DEFB 138
++     DEFB 6
++         DEFB 159
++         DEFB 188
++     DEFB 6
++         DEFB 150
++         DEFB 138
++     DEFB 6
++         DEFB 157
++     DEFB 6
++         DEFB 159
++     DEFB 6
++         DEFB 150
++     DEFB 6
+          DEFB 159
++     DEFB 6
++         DEFB 149
++         DEFB 137
++     DEFB 6
+          DEFB 159
+-         DEFB 124
+-     DEFB 4
+-         DEFB 166
+-         DEFB 152
+-         DEFB 126
+-     DEFB 4
+-         DEFB 190
+-         DEFB 124
+-     DEFB 4
+-         DEFB 159
+-         DEFB 118
+-     DEFB 4
+-         DEFB 171
+-         DEFB 148
+-         DEFB 118
+-     DEFB 4
+-         DEFB 190
+-         DEFB 124
+-     DEFB 4
+-         DEFB 159
+-         DEFB 155
+-         DEFB 118
+-     DEFB 4
+-         DEFB 169
+-         DEFB 162
+-         DEFB 126
+-     DEFB 4
+-         DEFB 190
+-         DEFB 118
+-     DEFB 4
+-         DEFB 159
+-         DEFB 118
+-     DEFB 4
+-         DEFB 167
+-         DEFB 148
+-         DEFB 118
+-     DEFB 4
+-         DEFB 190
+-         DEFB 118
+-     DEFB 4
+-         DEFB 159
+-         DEFB 155
+-         DEFB 126
+-     DEFB 4
+-         DEFB 166
+-         DEFB 162
+-         DEFB 124
+-     DEFB 4
+-         DEFB 190
+-         DEFB 126
+-     DEFB 4
+-         DEFB 159
+-         DEFB 126
+-     DEFB 4
+-         DEFB $00
+-.pat3
+-         DEFB $BD,2
+-         DEFB 171
+-         DEFB 141
+-         DEFB 118
+-     DEFB 4
+-         DEFB 190
+-         DEFB 124
+-     DEFB 4
+-         DEFB 160
+-         DEFB 148
+-         DEFB 118
+-     DEFB 4
+-         DEFB 169
+-         DEFB 153
+-         DEFB 126
+-     DEFB 4
+-         DEFB 190
+-         DEFB 124
+-     DEFB 4
+-         DEFB 160
+-         DEFB 118
+-     DEFB 4
+-         DEFB 167
+-         DEFB 153
+-         DEFB 118
+-     DEFB 4
+-         DEFB 190
+-         DEFB 118
+-     DEFB 4
+-         DEFB 160
+-         DEFB 148
+-         DEFB 124
+-     DEFB 4
+-         DEFB 169
+-         DEFB 153
+-         DEFB 126
+-     DEFB 4
+-         DEFB 190
+-         DEFB 124
+-     DEFB 4
+-         DEFB 160
+-         DEFB 118
+-     DEFB 4
+-         DEFB 171
+-         DEFB 142
+-         DEFB 118
+-     DEFB 4
+-         DEFB 166
+-         DEFB 124
+-     DEFB 4
+-         DEFB 161
++         DEFB 137
++     DEFB 6
++         DEFB 157
++         DEFB 188
++     DEFB 6
+          DEFB 149
+-         DEFB 118
+-     DEFB 4
+-         DEFB 171
+-         DEFB 154
+-         DEFB 126
+-     DEFB 4
+-         DEFB 166
+-         DEFB 118
+-     DEFB 4
+-         DEFB 161
+-         DEFB 118
+-     DEFB 4
+-         DEFB 171
+-         DEFB 142
+-         DEFB 118
+-     DEFB 4
+-         DEFB 166
+-         DEFB 118
+-     DEFB 4
+-         DEFB 161
++         DEFB 137
++     DEFB 6
++         DEFB 159
++     DEFB 6
++         DEFB 157
++         DEFB 145
++     DEFB 6
+          DEFB 149
+-         DEFB 126
+-     DEFB 4
+-         DEFB 171
+-         DEFB 154
+-         DEFB 124
+-     DEFB 4
+-         DEFB 166
+-         DEFB 126
+-     DEFB 4
+-         DEFB 161
+-         DEFB 126
+-     DEFB 4
++     DEFB 6
++         DEFB 159
++     DEFB 6
+          DEFB $00
+-.pat4
++.pat2
+          DEFB $BD,2
+-         DEFB 170
+-         DEFB 142
+-         DEFB 118
+-     DEFB 4
+-         DEFB 166
+-         DEFB 124
+-     DEFB 4
+-         DEFB 161
+-         DEFB 149
+-         DEFB 118
+-     DEFB 4
+-         DEFB 170
+-         DEFB 154
+-         DEFB 126
+-     DEFB 4
+-         DEFB 166
+-         DEFB 124
+-     DEFB 4
+-         DEFB 161
+-         DEFB 118
+-     DEFB 4
+-         DEFB 170
+-         DEFB 142
+-         DEFB 118
+-     DEFB 4
+-         DEFB 166
+-         DEFB 118
+-     DEFB 4
+-         DEFB 161
+-         DEFB 149
+-         DEFB 126
+-     DEFB 4
+-         DEFB 170
+-         DEFB 154
+-         DEFB 126
+-     DEFB 4
+-         DEFB 166
+-         DEFB 126
+-     DEFB 4
+-         DEFB 161
+-         DEFB 126
+-     DEFB 4
+-         DEFB $00
+-.pat5
+-         DEFB $BD,4
+-         DEFB 159
+          DEFB 140
+-     DEFB 20
+-         DEFB 188
+-     DEFB 10
+-         DEFB 190
+-         DEFB 188
+-     DEFB 10
+-         DEFB 159
++         DEFB 152
++     DEFB 24
+          DEFB 140
+-     DEFB 20
+-         DEFB 188
+-     DEFB 10
+-         DEFB 190
+-         DEFB 188
+-     DEFB 10
++     DEFB 6
++         DEFB 141
++     DEFB 6
++         DEFB 140
++     DEFB 12
++         DEFB 139
++         DEFB 163
++     DEFB 24
++         DEFB 139
++     DEFB 6
++         DEFB 140
++     DEFB 6
++         DEFB 139
++     DEFB 12
+          DEFB $00
+-#endasm
++.pat3
++         DEFB 138
++         DEFB 150
++     DEFB 24
++         DEFB 138
++     DEFB 6
++         DEFB 139
++     DEFB 6
++         DEFB 138
++     DEFB 12
++         DEFB 137
++         DEFB 161
++     DEFB 30
++         DEFB 133
++         DEFB 145
++     DEFB 18
++         DEFB $00
++
++#endasm
+\ No newline at end of file

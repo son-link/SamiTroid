@@ -4,6 +4,7 @@
 
 # flags:
 # 1	- La cantidad de huevos que hemos llevado hasta el criadero
+# 2 - Nivel de seguridad de la llave actual
 
 PRESS_FIRE ON SCREEN 35
 	IF PLAYER_IN_X 112, 143
@@ -12,5 +13,27 @@ PRESS_FIRE ON SCREEN 35
     THEN
        DEC OBJECTS 1
        INC FLAG 1, 1
+    END
+END
+
+ENTERING SCREEN 1
+	IF FLAG 1 = 14
+	THEN
+		SET TILE (0, 3) = 0
+	END
+END
+
+ENTERING SCREEN 42
+    IF FLAG 1 > 9
+    THEN
+        SET TILE (14, 2) = 0
+    END
+END
+
+PRESS_FIRE ON SCREEN 0
+	IF PLAYER_IN_X 112, 143
+    IF PLAYER_IN_Y 48, 79
+    THEN
+       WIN GAME
     END
 END

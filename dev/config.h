@@ -10,8 +10,7 @@
 
 #define MAP_W					8		//
 #define MAP_H					9		// Map dimmensions in screens
-//#define SCR_INICIO				36		// Initial screen
-#define SCR_INICIO				71
+#define SCR_INICIO				36		// Initial screen
 
 #define PLAYER_INI_X			7		//
 #define PLAYER_INI_Y			8		// Initial tile coordinates
@@ -20,7 +19,7 @@
 #define PLAYER_FIN_Y			99		// Player tile coordinates to finish game
 #define PLAYER_NUM_OBJETOS		99		// Objects to get to finish game
 #define PLAYER_LIFE 			99		// Max and starting life gauge.
-#define PLAYER_REFILL			10		// Life recharge
+#define PLAYER_REFILL			15		// Life recharge
 //#define COMPRESSED_LEVELS				// use levels.h instead of mapa.h and enems.h (!)
 //#define MAX_LEVELS			2		// # of compressed levels
 //#define REFILL_ME						// If defined, refill player on each level
@@ -52,10 +51,10 @@
 #define ONLY_ONE_OBJECT				// If defined, only one object can be carried at a time.
 #define OBJECT_COUNT			1		// Defines which FLAG will be used to store the object count.
 #define DEACTIVATE_EVIL_TILE			// If defined, no killing tiles (behaviour 1) are detected.
-#define FULL_BOUNCE					// If defined, evil tile bounces equal MAX_VX, otherwise v/2
-#define PLAYER_BOUNCES				// If defined, collisions make player bounce
+//#define FULL_BOUNCE					// If defined, evil tile bounces equal MAX_VX, otherwise v/2
+//#define PLAYER_BOUNCES				// If defined, collisions make player bounce
 //#define SLOW_DRAIN					// Works with bounces. Drain is 4 times slower
-//#define PLAYER_FLICKERS 			 	// If defined, collisions make player flicker instead.
+#define PLAYER_FLICKERS 			 	// If defined, collisions make player flicker instead.
 //#define MAP_BOTTOM_KILLS				// If defined, exiting the map bottomwise kills.
 //#define WALLS_STOP_ENEMIES				// If defined, enemies react to the scenary
 #define EVERYTHING_IS_A_WALL			// If defined, any tile <> type 0 is a wall, otherwise just 8.
@@ -87,7 +86,7 @@
 #define PLAYER_BULLET_Y_OFFSET	6	// vertical offset from the player's top.
 #define PLAYER_BULLET_X_OFFSET	0	// vertical offset from the player's left/right.
 #define ENEMIES_LIFE_GAUGE	2		// Amount of shots needed to kill enemies.
-//#define RESPAWN_ON_ENTER				// Enemies respawn when entering screen
+#define RESPAWN_ON_ENTER				// Enemies respawn when entering screen
 //#define FIRE_MIN_KILLABLE 	3		// If defined, only enemies >= N can be killed.
 //#define CAN_FIRE_UP						// If defined, player can fire upwards and diagonal.
 //#define MAX_AMMO				99		// If defined, ammo is not infinite!
@@ -155,11 +154,11 @@
 
 #define VIEWPORT_X				1		//
 #define VIEWPORT_Y				0		// Viewport character coordinates
-#define LIFE_X					3		//
+#define LIFE_X					11		//
 #define LIFE_Y					22		// Life gauge counter character coordinates
-#define OBJECTS_X				13		//
+#define OBJECTS_X				16		//
 #define OBJECTS_Y				22		// Objects counter character coordinates
-#define OBJECTS_ICON_X			27		//
+#define OBJECTS_ICON_X			14		//
 #define OBJECTS_ICON_Y			21		// Objects icon character coordinates (use with ONLY_ONE_OBJECT)
 #define KEYS_X					21		//
 #define KEYS_Y					22		// Keys counter character coordinates
@@ -231,9 +230,9 @@
 // Save for 10 (special), but that's obvious, innit?
 #ifndef COMPRESSED_LEVELS
 unsigned char comportamiento_tiles [] = {
-	0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0, 0, 0, 4, 10,
+	0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0, 0, 4, 4, 10,
 	0, 0, 0, 0, 0, 8, 0, 8, 8, 8, 8, 8, 8, 8, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
 #endif
 

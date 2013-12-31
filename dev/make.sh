@@ -1,5 +1,17 @@
 #!/bin/bash
 NAME=sami
+FORMAT=tap
+if [ $# -eq 2 ] && [ $1 == '-f' ]; then
+	if echo $2 | egrep -q "[tap|tzx|wav]"; then
+		FORMAT=$2
+	else
+		FORMAT=tap
+	fi
+elif [ ! $# -eq 0 ]; then
+	echo "Modo de uso: $0 [-f tap|tzx|wav]"
+	exit
+fi
+
 echo -e "\e[32mCompilando $NAME"
 echo -e "Compilando script\e[0m"
 wine ../script/msc ../script/$NAME.spt msc.h 72
@@ -18,7 +30,11 @@ echo -e "\e[32mRegenerando mapa\e[0m"
 ../utils/tmxcnv ../map/sami.tmx mapa.h enems.h
 
 echo -e "\e[32mCompilando juego\e[0m"
-zcc +zx -vn $NAME.c -o $NAME.bin -lndos -lsplib2 -zorg=24200
+zcc +zx -vn $NAME.c -o $NAME.bin -lndos -lsplib2 -zorg=24200 -no-cleanup
+# Si fallo la compilación salimos del script sin continuar con el proceso
+if [ $? -ne 0 ]; then
+	exit
+fi
 filesize=$(stat --printf="%s" sami.bin)
 resta=$[36454-$filesize]
 if [ $resta -gt 1000 ]; then
@@ -41,7 +57,7 @@ echo " define COMP_SIZE $filesize" > define.asm
 echo " define BORDER_LOADING 0" >> define.asm
 
 ../utils/sjasmplus asmloader.asm
-../utils/gentape $NAME.tap \
+../utils/gentape ${NAME}.${FORMAT} \
 	basic "'SAMI'"  0 asmloader.bin \
 	data                $NAME.zx7
 

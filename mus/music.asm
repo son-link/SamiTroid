@@ -1,14 +1,16 @@
-#asm
+                ORG 60000
+BORDER_COL:     EQU  $0
+
 ; *****************************************************************************
 ; * Phaser1 Engine, with synthesised drums
 ; *
-; * Original code by Shiru - .http:;shiru.untergrund.net/
+; * Original code by Shiru - http://shiru.untergrund.net/
 ; * Modified by Chris Cowley
 ; *
 ; * Produced by Beepola v1.06.01
 ; ******************************************************************************
 
-.musicstart
+START:
              LD    HL,MUSICDATA         ;  <- Pointer to Music Data. Change
                                         ;     this to play a different song
              LD   A,(HL)                         ; Get the loop start pointer
@@ -31,10 +33,10 @@
              LD   L,A
              LD   (NOTE_PTR),HL                  ; Set the note offset (within this pattern) to 0
 
-.player
+PLAYER:
              DI
              PUSH IY
-             ;LD   A,BORDER_COL
+             LD   A,BORDER_COL
              LD   H,$00
              LD   L,A
              LD   (CNT_1A),HL
@@ -50,27 +52,27 @@
 ; ********************************************************************************************************
 ; * NEXT_PATTERN
 ; *
-; * Select the next pattern in sequence (and handle looping if weve reached PATTERN_LOOP_END
+; * Select the next pattern in sequence (and handle looping if we've reached PATTERN_LOOP_END
 ; * Execution falls through to PLAYNOTE to play the first note from our next pattern
 ; ********************************************************************************************************
-.next_pattern
+NEXT_PATTERN:
                           LD   A,(PATTERN_PTR)
                           INC  A
                           INC  A
                           DEFB $FE                           ; CP n
-.pattern_loop_end         DEFB 0
+PATTERN_LOOP_END:         DEFB 0
                           JR   NZ,NO_PATTERN_LOOP
                           ; Handle Pattern Looping at and of song
                           DEFB $3E                           ; LD A,n
-.pattern_loop_begin       DEFB 0
-.no_pattern_loop          LD   (PATTERN_PTR),A
+PATTERN_LOOP_BEGIN:       DEFB 0
+NO_PATTERN_LOOP:          LD   (PATTERN_PTR),A
                           LD   HL,$0000
                           LD   (NOTE_PTR),HL   ; Start of pattern (NOTE_PTR = 0)
 
-.main_loop
+MAIN_LOOP:
              LD   IYL,0                        ; Set channel = 0
 
-.read_loop
+READ_LOOP:
              LD   HL,(PATTERN_ADDR)
              LD   A,(PATTERN_PTR)
              LD   E,A
@@ -109,16 +111,16 @@
              EX   DE,HL
 
              DEFB $DD,$21                      ; LD IX,nn
-.current_inst
+CURRENT_INST:
              DEFW $0000
 
              LD   A,(IX+$00)
              OR   A
              JR   Z,L809B                      ; Original code jumps into byte 2 of the DJNZ (invalid opcode FD)
              LD   B,A
-.l8098       ADD  HL,HL
+L8098:       ADD  HL,HL
              DJNZ L8098
-.l809b       LD   E,(IX+$01)
+L809B:       LD   E,(IX+$01)
              LD   D,(IX+$02)
              ADD  HL,DE
              LD   (DIV_1B),HL
@@ -135,7 +137,7 @@
              LD   (CNT_1B),HL
              JR   READ_LOOP
 
-.set_note2
+SET_NOTE2:
              LD   (DIV_2),DE
              LD   A,IYH
              LD   HL,OUT_2
@@ -144,7 +146,7 @@
              LD   (CNT_2),HL
              JP   READ_LOOP
 
-.set_stop
+SET_STOP:
              LD   HL,$0000
              LD   A,IYL
              OR   A
@@ -156,14 +158,14 @@
              RES  4,(HL)
              LD   IYL,1
              JP   READ_LOOP
-.set_stop2
+SET_STOP2:
              ; Stop channel 2 note
              LD   (DIV_2),HL
              LD   HL,OUT_2
              RES  4,(HL)
              JP   READ_LOOP
 
-.other       CP   $3C
+OTHER:       CP   $3C
              JR   Z,SET_STOP                   ; Stop note
              CP   $3E
              JR   Z,SKIP_CH1                   ; No changes to channel 1
@@ -176,50 +178,50 @@
              LD   (NOTE_PTR),DE                ; Increment the note pointer
 
              DEFB $01                          ; LD BC,nn
-.instrum_tbl
+INSTRUM_TBL:
              DEFW $0000
 
              ADD  HL,BC
              LD   (CURRENT_INST),HL
              JP   READ_LOOP
 
-.skip_ch1
+SKIP_CH1:
              LD   IYL,$01
              JP   READ_LOOP
 
-.exit_player
+EXIT_PLAYER:
              LD   HL,$2758
              EXX
              POP  IY
              EI
              RET
 
-.render
+RENDER:
              AND  $7F                          ; L813A
              CP   $76
              JP   NC,DRUMS
              LD   D,A
              EXX
              DEFB $21                          ; LD HL,nn
-.cnt_1a      DEFW $0000
+CNT_1A:      DEFW $0000
              DEFB $DD,$21                      ; LD IX,nn
-.cnt_1b      DEFW $0000
+CNT_1B:      DEFW $0000
              DEFB $01                          ; LD BC,nn
-.div_1a      DEFW $0000
+DIV_1A:      DEFW $0000
              DEFB $11                          ; LD DE,nn
-.div_1b      DEFW $0000
+DIV_1B:      DEFW $0000
              DEFB $3E                          ; LD A,n
-.out_1       DEFB $0
+OUT_1:       DEFB $0
              EXX
-             EX   AF,AF ; beware!
+             EX   AF,AF
              DEFB $21                          ; LD HL,nn
-.cnt_2       DEFW $0000
+CNT_2:       DEFW $0000
              DEFB $01                          ; LD BC,nn
-.div_2       DEFW $0000
+DIV_2:       DEFW $0000
              DEFB $3E                          ; LD A,n
-.out_2       DEFB $00
+OUT_2:       DEFB $00
 
-.play_note
+PLAY_NOTE:
              ; Read keyboard
              LD   E,A
              XOR  A
@@ -227,122 +229,122 @@
              OR   $E0
              INC  A
 
-.player_wait_key
+PLAYER_WAIT_KEY:
              JR   NZ,EXIT_PLAYER
              LD   A,E
              LD   E,0
 
-.l8168       EXX
-             EX   AF,AF ; beware!
+L8168:       EXX
+             EX   AF,AF
              ADD  HL,BC
              OUT  ($FE),A
              JR   C,L8171
              JR   L8173
-.l8171       XOR  $10
-.l8173       ADD  IX,DE
+L8171:       XOR  $10
+L8173:       ADD  IX,DE
              JR   C,L8179
              JR   L817B
-.l8179       XOR  $10
-.l817B       EX   AF,AF ; beware!
+L8179:       XOR  $10
+L817B:       EX   AF,AF
              OUT  ($FE),A
              EXX
              ADD  HL,BC
              JR   C,L8184
              JR   L8186
-.l8184       XOR  $10
-.l8186       NOP
+L8184:       XOR  $10
+L8186:       NOP
              JP   L818A
 
-.l818A       EXX
-             EX   AF,AF ; beware!
+L818A:       EXX
+             EX   AF,AF
              ADD  HL,BC
              OUT  ($FE),A
              JR   C,L8193
              JR   L8195
-.l8193       XOR  $10
-.l8195       ADD  IX,DE
+L8193:       XOR  $10
+L8195:       ADD  IX,DE
              JR   C,L819B
              JR   L819D
-.l819b       XOR  $10
-.l819d       EX   AF,AF ; beware!
+L819B:       XOR  $10
+L819D:       EX   AF,AF
              OUT  ($FE),A
              EXX
              ADD  HL,BC
              JR   C,L81A6
              JR   L81A8
-.l81a6       XOR  $10
-.l81a8       NOP
+L81A6:       XOR  $10
+L81A8:       NOP
              JP   L81AC
 
-.l81ac       EXX
-             EX   AF,AF ; beware!
+L81AC:       EXX
+             EX   AF,AF
              ADD  HL,BC
              OUT  ($FE),A
              JR   C,L81B5
              JR   L81B7
-.l81b5       XOR  $10
-.l81b7       ADD  IX,DE
+L81B5:       XOR  $10
+L81B7:       ADD  IX,DE
              JR   C,L81BD
              JR   L81BF
-.l81bd       XOR  $10
-.l81bf       EX   AF,AF ; beware!
+L81BD:       XOR  $10
+L81BF:       EX   AF,AF
              OUT  ($FE),A
              EXX
              ADD  HL,BC
              JR   C,L81C8
              JR   L81CA
-.l81c8       XOR  $10
-.l81ca       NOP
+L81C8:       XOR  $10
+L81CA:       NOP
              JP   L81CE
 
-.l81ce       EXX
-             EX   AF,AF ; beware!
+L81CE:       EXX
+             EX   AF,AF
              ADD  HL,BC
              OUT  ($FE),A
              JR   C,L81D7
              JR   L81D9
-.l81d7       XOR  $10
-.l81d9       ADD  IX,DE
+L81D7:       XOR  $10
+L81D9:       ADD  IX,DE
              JR   C,L81DF
              JR   L81E1
-.l81df       XOR  $10
-.l81e1       EX   AF,AF ; beware!
+L81DF:       XOR  $10
+L81E1:       EX   AF,AF
              OUT  ($FE),A
              EXX
              ADD  HL,BC
              JR   C,L81EA
              JR   L81EC
-.l81ea       XOR  $10
+L81EA:       XOR  $10
 
-.l81ec       DEC  E
+L81EC:       DEC  E
              JP   NZ,L8168
 
              EXX
-             EX   AF,AF ; beware!
+             EX   AF,AF
              ADD  HL,BC
              OUT  ($FE),A
              JR   C,L81F9
              JR   L81FB
-.l81f9       XOR  $10
-.l81fb       ADD  IX,DE
+L81F9:       XOR  $10
+L81FB:       ADD  IX,DE
              JR   C,L8201
              JR   L8203
-.l8201       XOR  $10
-.l8203       EX   AF,AF ; beware!
+L8201:       XOR  $10
+L8203:       EX   AF,AF
              OUT  ($FE),A
              EXX
              ADD  HL,BC
              JR   C,L820C
              JR   L820E
-.l820c       XOR  $10
+L820C:       XOR  $10
 
-.l820e       DEC  D
+L820E:       DEC  D
              JP   NZ,PLAY_NOTE
 
              LD   (CNT_2),HL
              LD   (OUT_2),A
              EXX
-             EX   AF,AF ; beware!
+             EX   AF,AF
              LD   (CNT_1A),HL
              LD   (CNT_1B),IX
              LD   (OUT_1),A
@@ -351,7 +353,7 @@
 ; ************************************************************
 ; * DRUMS - Synthesised
 ; ************************************************************
-.drums
+DRUMS:
              ADD  A,A                          ; On entry A=$75+Drum number (i.e. $76 to $7E)
              LD   B,0
              LD   C,A
@@ -363,56 +365,56 @@
              EX   DE,HL
              JP   (HL)
 
-.drum_tone1  LD   L,16
+DRUM_TONE1:  LD   L,16
              JR   DRUM_TONE
-.drum_tone2  LD   L,12
+DRUM_TONE2:  LD   L,12
              JR   DRUM_TONE
-.drum_tone3  LD   L,8
+DRUM_TONE3:  LD   L,8
              JR   DRUM_TONE
-.drum_tone4  LD   L,6
+DRUM_TONE4:  LD   L,6
              JR   DRUM_TONE
-.drum_tone5  LD   L,4
+DRUM_TONE5:  LD   L,4
              JR   DRUM_TONE
-.drum_tone6  LD   L,2
-.drum_tone
+DRUM_TONE6:  LD   L,2
+DRUM_TONE:
              LD   DE,3700
              LD   BC,$0101
-             ;LD   A,BORDER_COL
-.dt_loop0    OUT  ($FE),A
+             LD   A,BORDER_COL
+DT_LOOP0:    OUT  ($FE),A
              DEC  B
              JR   NZ,DT_LOOP1
              XOR  16
              LD   B,C
-             EX   AF,AF ; beware!
+             EX   AF,AF
              LD   A,C
              ADD  A,L
              LD   C,A
-             EX   AF,AF ; beware!
-.dt_loop1    DEC  E
+             EX   AF,AF
+DT_LOOP1:    DEC  E
              JR   NZ,DT_LOOP0
              DEC  D
              JR   NZ,DT_LOOP0
              JP   MAIN_LOOP
 
-.drum_noise1 LD   DE,2480
+DRUM_NOISE1: LD   DE,2480
              LD   IXL,1
              JR   DRUM_NOISE
-.drum_noise2 LD   DE,1070
+DRUM_NOISE2: LD   DE,1070
              LD   IXL,10
              JR   DRUM_NOISE
-.drum_noise3 LD   DE,365
+DRUM_NOISE3: LD   DE,365
              LD   IXL,101
-.drum_noise
+DRUM_NOISE:
              LD   H,D
              LD   L,E
-             ;LD   A,BORDER_COL
+             LD   A,BORDER_COL
              LD   C,A
-.dn_loop0    LD   A,(HL)
+DN_LOOP0:    LD   A,(HL)
              AND  16
              OR   C
              OUT  ($FE),A
              LD   B,IXL
-.dn_loop1    DJNZ DN_LOOP1
+DN_LOOP1:    DJNZ DN_LOOP1
              INC  HL
              DEC  E
              JR   NZ,DN_LOOP0
@@ -420,14 +422,14 @@
              JR   NZ,DN_LOOP0
              JP   MAIN_LOOP
 
-.pattern_addr   DEFW  $0000
-.pattern_ptr    DEFB  0
-.note_ptr       DEFW  $0000
+PATTERN_ADDR:   DEFW  $0000
+PATTERN_PTR:    DEFB  0
+NOTE_PTR:       DEFW  $0000
 
 ; **************************************************************
 ; * Frequency Table
 ; **************************************************************
-.freq_table
+FREQ_TABLE:
              DEFW 178,189,200,212,225,238,252,267,283,300,318,337
              DEFW 357,378,401,425,450,477,505,535,567,601,637,675
              DEFW 715,757,802,850,901,954,1011,1071,1135,1202,1274,1350
@@ -437,12 +439,12 @@
 ; *****************************************************************
 ; * Synth Drum Lookup Table
 ; *****************************************************************
-.drum_table
+DRUM_TABLE:
              DEFW DRUM_TONE1,DRUM_TONE2,DRUM_TONE3,DRUM_TONE4,DRUM_TONE5,DRUM_TONE6
              DEFW DRUM_NOISE1,DRUM_NOISE2,DRUM_NOISE3
 
 
-.musicdata
+MUSICDATA:
              DEFB 0  ; Pattern loop begin * 2
              DEFB 24  ; Song length * 2
              DEFW 12         ; Offset to start of song (length of instrument table)
@@ -456,7 +458,7 @@
              DEFW 15      ; Detune
              DEFB 0      ; Phase
 
-.patterndata        DEFW      PAT0
+PATTERNDATA:        DEFW      PAT0
                     DEFW      PAT1
                     DEFW      PAT0
                     DEFW      PAT1
@@ -470,7 +472,7 @@
                     DEFW      PAT5
 
 ; *** Pattern data - $00 marks the end of a pattern ***
-.pat0
+PAT0:
          DEFB $BD,0
          DEFB 164
          DEFB 140
@@ -507,7 +509,7 @@
          DEFB 188
      DEFB 10
          DEFB $00
-.pat1
+PAT1:
          DEFB $BD,0
          DEFB 164
          DEFB 140
@@ -544,7 +546,7 @@
          DEFB 188
      DEFB 10
          DEFB $00
-.pat2
+PAT2:
          DEFB $BD,2
          DEFB 171
          DEFB 152
@@ -631,7 +633,7 @@
          DEFB 126
      DEFB 4
          DEFB $00
-.pat3
+PAT3:
          DEFB $BD,2
          DEFB 171
          DEFB 141
@@ -718,7 +720,7 @@
          DEFB 126
      DEFB 4
          DEFB $00
-.pat4
+PAT4:
          DEFB $BD,2
          DEFB 170
          DEFB 142
@@ -763,7 +765,7 @@
          DEFB 126
      DEFB 4
          DEFB $00
-.pat5
+PAT5:
          DEFB $BD,4
          DEFB 159
          DEFB 140
@@ -782,4 +784,3 @@
          DEFB 188
      DEFB 10
          DEFB $00
-#endasm

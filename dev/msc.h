@@ -3,20 +3,35 @@
 // Copyleft 2011 The Mojon Twins
  
 // Script data & pointers
+extern unsigned char mscce_0 [];
+extern unsigned char mscce_1 [];
 extern unsigned char msccf_0 [];
+extern unsigned char msccf_1 [];
  
 unsigned char *e_scripts [] = {
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    0, mscce_0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, mscce_1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
  
 unsigned char *f_scripts [] = {
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, msccf_0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    msccf_1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, msccf_0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
  
 #asm
+._mscce_0
+
+    defb 0x09, 0x10, 0x01, 0x0E, 0xFF, 0x20, 0x00, 0x03, 0x00, 0xFF, 0xFF
+
+._mscce_1
+
+    defb 0x09, 0x12, 0x01, 0x09, 0xFF, 0x20, 0x0E, 0x02, 0x00, 0xFF, 0xFF
+
 ._msccf_0
 
     defb 0x0E, 0x21, 0x70, 0x8F, 0x22, 0x80, 0x9F, 0x40, 0xFF, 0x41, 0x01, 0x10, 0x01, 0x01, 0xFF, 0xFF
+
+._msccf_1
+
+    defb 0x09, 0x21, 0x70, 0x8F, 0x22, 0x30, 0x4F, 0xFF, 0xF1, 0xFF, 0xFF
 
 #endasm
  
@@ -62,6 +77,20 @@ void run_script (void) {
         while (!terminado) {
             c = read_byte ();
             switch (c) {
+                case 0x10:
+                    // IF FLAG x = n
+                    // Opcode: 10 x n
+                    x = read_vbyte ();
+                    n = read_vbyte ();
+                    terminado = (flags [x] != n);
+                    break;
+                case 0x12:
+                    // IF FLAG x > n
+                    // Opcode: 12 x n
+                    x = read_vbyte ();
+                    n = read_vbyte ();
+                    terminado = (flags [x] <= n);
+                    break;
                 case 0x21:
                     // IF PLAYER_IN_X x1, x2
                     // Opcode: 21 x1 x2
@@ -102,12 +131,26 @@ void run_script (void) {
                         n = read_vbyte ();
                         flags [x] += n;
                         break;
+                    case 0x20:
+                        // SET TILE (x, y) = n
+                        // Opcode: 20 x y n
+                        x = read_vbyte ();
+                        y = read_vbyte ();
+                        n = read_vbyte ();
+                        map_buff [x + (y << 4) - y] = n;
+                        map_attr [x + (y << 4) - y] = comportamiento_tiles [n];
+                        draw_coloured_tile (VIEWPORT_X + x + x, VIEWPORT_Y + y + y, n);
+                        break;
                     case 0x41:
                         // DEC OBJECTS n
                         // Opcode: 41 n
                         n = read_vbyte ();
                         player.objs -= n;
                         draw_objs ();
+                        break;
+                    case 0xF1:
+                        script_result = 1;
+                        terminado = 1;
                         break;
                     case 0xFF:
                         terminado = 1;

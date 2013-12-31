@@ -2,7 +2,7 @@
 // Churrera copyleft 2011 by The Mojon Twins.
 
 void saca_a_todo_el_mundo_de_aqui (void) {
-	sp_MoveSprAbs (sp_player, spritesClip, 0, VIEWPORT_Y + 30, VIEWPORT_X + 20, 0, 0);				
+	sp_MoveSprAbs (sp_player, spritesClip, 0, VIEWPORT_Y + 30, VIEWPORT_X + 20, 0, 0);
 	for (gpit = 0; gpit < 3; gpit ++) {
 		if (malotes [enoffs + gpit].t != 0)
 			sp_MoveSprAbs (sp_moviles [gpit], spritesClip, 0, VIEWPORT_Y + 30, VIEWPORT_X + 20, 0, 0);
@@ -25,7 +25,7 @@ void do_game (void) {
 	unsigned char playing;
 #ifdef COMPRESSED_LEVELS
 	unsigned char mlplaying, level;
-#endif	
+#endif
 #ifdef SCRIPTING_KEY_M
 	int key_m;
 #endif
@@ -42,21 +42,21 @@ void do_game (void) {
 	#asm
 		di
 	#endasm
-	
+
 	cortina ();
-	
+
 	// splib2 initialization
 	sp_Initialize (7, 0);
 	sp_Border (BLACK);
 	sp_AddMemory(0, 56, 14, AD_FREE);
-	
+
 	// Define keys and default controls
-#ifdef USE_TWO_BUTTONS	
+#ifdef USE_TWO_BUTTONS
 	keys.up    = sp_LookupKey('w');
 	keys.down  = sp_LookupKey('s');
 	keys.left  = sp_LookupKey('a');
 	keys.right = sp_LookupKey('d');
-	keys.fire  = sp_LookupKey('m');	
+	keys.fire  = sp_LookupKey('m');
 	key_jump   = sp_LookupKey('n');
 	key_fire   = keys.fire;
 #else
@@ -84,18 +84,18 @@ void do_game (void) {
 	spritesClipValues.height = 20;
 	spritesClipValues.width = 30;
 	spritesClip = &spritesClipValues;
-	
+
 	// Sprite creation
 #ifdef NO_MASKS
 	sp_player = sp_CreateSpr (sp_OR_SPRITE, 3, sprite_2_a, 1, TRANSPARENT);
 	sp_AddColSpr (sp_player, sprite_2_b, TRANSPARENT);
 	sp_AddColSpr (sp_player, sprite_2_c, TRANSPARENT);
 	player.current_frame = player.next_frame = sprite_2_a;
-	
+
 	for (gpit = 0; gpit < 3; gpit ++) {
 		sp_moviles [gpit] = sp_CreateSpr(sp_OR_SPRITE, 3, sprite_9_a, 1, TRANSPARENT);
 		sp_AddColSpr (sp_moviles [gpit], sprite_9_b, TRANSPARENT);
-		sp_AddColSpr (sp_moviles [gpit], sprite_9_c, TRANSPARENT);	
+		sp_AddColSpr (sp_moviles [gpit], sprite_9_c, TRANSPARENT);
 		en_an [gpit].current_frame = sprite_9_a;
 	}
 #else
@@ -103,11 +103,11 @@ void do_game (void) {
 	sp_AddColSpr (sp_player, sprite_2_b, TRANSPARENT);
 	sp_AddColSpr (sp_player, sprite_2_c, TRANSPARENT);
 	player.current_frame = player.next_frame = sprite_2_a;
-	
+
 	for (gpit = 0; gpit < 3; gpit ++) {
 		sp_moviles [gpit] = sp_CreateSpr(sp_MASK_SPRITE, 3, sprite_9_a, 2, TRANSPARENT);
 		sp_AddColSpr (sp_moviles [gpit], sprite_9_b, TRANSPARENT);
-		sp_AddColSpr (sp_moviles [gpit], sprite_9_c, TRANSPARENT);	
+		sp_AddColSpr (sp_moviles [gpit], sprite_9_c, TRANSPARENT);
 		en_an [gpit].current_frame = en_an [gpit].next_frame = sprite_9_a;
 	}
 #endif
@@ -116,7 +116,7 @@ void do_game (void) {
 	for (gpit = 0; gpit < MAX_BULLETS; gpit ++) {
 #ifdef MASKED_BULLETS
 		sp_bullets [gpit] = sp_CreateSpr (sp_MASK_SPRITE, 2, sprite_19_a, 1, TRANSPARENT);
-#else		
+#else
 		sp_bullets [gpit] = sp_CreateSpr (sp_OR_SPRITE, 2, sprite_19_a, 1, TRANSPARENT);
 #endif
 		sp_AddColSpr (sp_bullets [gpit], sprite_19_b, TRANSPARENT);
@@ -145,7 +145,7 @@ void do_game (void) {
 			peta_el_beeper (7);
 			espera_activa (100);
 #endif
-				
+
 #ifndef DIRECT_TO_PLAY
 		// Clear screen and show game frame
 		cortina ();
@@ -157,10 +157,10 @@ void do_game (void) {
 
 		playing = 1;
 		init_player ();
-#ifndef COMPRESSED_LEVELS		
+#ifndef COMPRESSED_LEVELS
 		init_hotspots ();
 #endif
-#ifndef COMPRESSED_LEVELS		
+#ifndef COMPRESSED_LEVELS
 #ifndef DEACTIVATE_KEYS
 		init_cerrojos ();
 #endif
@@ -170,14 +170,14 @@ void do_game (void) {
 #endif
 #ifdef PLAYER_CAN_FIRE
 		init_bullets ();
-#endif	
+#endif
 
-#ifndef COMPRESSED_LEVELS	
+#ifndef COMPRESSED_LEVELS
 		n_pant = SCR_INICIO;
-#endif		
+#endif
 		maincounter = 0;
-		
-#ifdef ACTIVATE_SCRIPTING		
+
+#ifdef ACTIVATE_SCRIPTING
 		script_result = 0;
 		msc_init_all ();
 #endif
@@ -187,9 +187,9 @@ void do_game (void) {
 		script = e_scripts [MAP_W * MAP_H];
 		run_script ();
 #endif
-		
+
 		draw_scr ();
-#ifdef PLAYER_KILLS_ENEMIES 	
+#ifdef PLAYER_KILLS_ENEMIES
 #ifdef SHOW_TOTAL
 		// Show total of enemies next to the killed amount.
 
@@ -200,9 +200,9 @@ void do_game (void) {
 #endif
 
 		half_life = 0;
-			
+
 		objs_old = keys_old = life_old = killed_old = 0xff;
-#ifdef MAX_AMMO 	
+#ifdef MAX_AMMO
 		ammo_old = 0xff;
 #endif
 #if defined(TIMER_ENABLE) && defined(PLAYER_SHOW_TIMER)
@@ -210,12 +210,12 @@ void do_game (void) {
 #endif
 		success = 0;
 
-#ifdef PLAYER_CHECK_MAP_BOUNDARIES		
+#ifdef PLAYER_CHECK_MAP_BOUNDARIES
 		x_pant = n_pant % MAP_W; y_pant = n_pant / MAP_W;
 #endif
 
 		while (playing) {
-			
+
 #ifdef TIMER_ENABLE
 			// Timer
 			if (ctimer.on) {
@@ -234,8 +234,8 @@ void do_game (void) {
 				time_over ();
 #endif
 				script = e_scripts [MAP_W * MAP_H + 2];
-				run_script ();	
-			}	
+				run_script ();
+			}
 #endif
 
 #ifdef TIMER_KILL_0
@@ -245,9 +245,9 @@ void do_game (void) {
 				saca_a_todo_el_mundo_de_aqui ();
 				time_over ();
 #endif
-#endif				
+#endif
 				ctimer.zero = 0;
-#ifdef TIMER_AUTO_RESET 			
+#ifdef TIMER_AUTO_RESET
 				ctimer.t = TIMER_INITIAL;
 #endif
 				player.life --;
@@ -274,12 +274,12 @@ void do_game (void) {
 				objs_old = player.objs;
 			}
 #endif
-			
+
 			if (player.life != life_old) {
 				print_number2 (LIFE_X, LIFE_Y, player.life);
 				life_old = player.life;
 			}
-			
+
 #ifndef DEACTIVATE_KEYS
 			if (player.keys != keys_old) {
 				print_number2 (KEYS_X, KEYS_Y, player.keys);
@@ -291,12 +291,12 @@ void do_game (void) {
 #ifdef PLAYER_SHOW_KILLS
 			if (player.killed != killed_old) {
 				print_number2 (KILLED_X, KILLED_Y, player.killed);
-				killed_old = player.killed; 
+				killed_old = player.killed;
 			}
 #endif
 #endif
 
-#ifdef MAX_AMMO 	
+#ifdef MAX_AMMO
 			if (player.ammo != ammo_old) {
 				print_number2 (AMMO_X, AMMO_Y, player.ammo);
 				ammo_old = player.ammo;
@@ -312,19 +312,19 @@ void do_game (void) {
 
 			maincounter ++;
 			half_life = !half_life;
-			
+
 			// Move player
 			move ();
-			
+
 			// Move enemies
 			mueve_bicharracos ();
 
 #ifdef PLAYER_CAN_FIRE
-			// Move bullets 			
+			// Move bullets
 			mueve_bullets ();
 #endif
 
-			// Render		
+			// Render
 			for (gpit = 0; gpit < 3; gpit ++) {
 #if defined (RANDOM_RESPAWN) || defined (ENABLE_CUSTOM_TYPE_6)
 				if (en_an [gpit].fanty_activo || malotes [enoffs + gpit].t == 6) {
@@ -344,25 +344,25 @@ void do_game (void) {
 			// Precalc this, comes handy:
 			x = player.x >> 6;
 			y = player.y >> 6;
-			
+
 #ifdef ACTIVATE_SCRIPTING
 #ifdef ENABLE_FIRE_ZONE
 			if (f_zone_ac == 1) {
 				if (x >= fzx1 && x <= fzx2 && y >= fzy1 && y <= fzy2) {
 					run_fire_script ();
-				}	
+				}
 			}
 #endif
-#endif			
-			
+#endif
+
 			if ( !(player.estado & EST_PARP) || !(half_life) )
 				sp_MoveSprAbs (sp_player, spritesClip, player.next_frame - player.current_frame, VIEWPORT_Y + (y >> 3), VIEWPORT_X + (x >> 3), x & 7, y & 7);
 			else
 				sp_MoveSprAbs (sp_player, spritesClip, player.next_frame - player.current_frame, -2, -2, 0, 0);
-			
+
 			player.current_frame = player.next_frame;
-			
-			
+
+
 #ifdef PLAYER_CAN_FIRE
 			for (gpit = 0; gpit < MAX_BULLETS; gpit ++) {
 				if (bullets [gpit].estado == 1) {
@@ -371,17 +371,17 @@ void do_game (void) {
 					sp_MoveSprAbs (sp_bullets [gpit], spritesClip, 0, -2, -2, 0, 0);
 				}
 			}
-#endif			
-			
+#endif
+
 			// Update to screen
 			sp_UpdateNow();
-			
+
 #ifdef PLAYER_CAN_FIRE
 			for (gpit = 0; gpit < 3; gpit ++)
 				if (en_an [gpit].morido == 1) {
 					peta_el_beeper (1);
 					en_an [gpit].morido = 0;
-				}	
+				}
 #endif
 
 #ifdef PLAYER_FLICKERS
@@ -389,76 +389,67 @@ void do_game (void) {
 			if (player.estado == EST_PARP) {
 				player.ct_estado --;
 				if (player.ct_estado == 0)
-					player.estado = EST_NORMAL; 
+					player.estado = EST_NORMAL;
 			}
-#endif			
-			
+#endif
+
 			// Hotspot interaction.
 			if (x >= hotspot_x - 15 && x <= hotspot_x + 15 && y >= hotspot_y - 15 && y <= hotspot_y + 15) {
 				// Deactivate hotspot
 				draw_coloured_tile (VIEWPORT_X + (hotspot_x >> 3), VIEWPORT_Y + (hotspot_y >> 3), orig_tile);
 				gpit = 0;
-				// Was it an object, key or life boost?
-				if (hotspots [n_pant].act == 0) {
-					player.life += PLAYER_REFILL;
-					if (player.life > PLAYER_LIFE)
-						player.life = PLAYER_LIFE;
-					hotspots [n_pant].act = 2;
-					peta_el_beeper (8);
-				} else {					
-					switch (hotspots [n_pant].tipo) {
-#ifndef DEACTIVATE_OBJECTS						
-						case 1:
+// Was it an object, key or life boost?
+                if (hotspots [n_pant].act) {
+                    switch (hotspots [n_pant].tipo) {
+#ifndef DEACTIVATE_OBJECTS
+                        case 1:
 #ifdef ONLY_ONE_OBJECT
-							if (player.objs == 0) {
-								player.objs ++;
-								peta_el_beeper (9); 
-							} else {
-								peta_el_beeper (4); 
-								draw_coloured_tile (VIEWPORT_X + (hotspot_x >> 3), VIEWPORT_Y + (hotspot_y >> 3), 17);
-								gpit = 1;
-							}
+                            if (player.objs == 0) {
+                                player.objs ++;
+                                peta_el_beeper (9);
+                            } else {
+                                peta_el_beeper (4);
+                                draw_coloured_tile (VIEWPORT_X + (hotspot_x >> 3), VIEWPORT_Y + (hotspot_y >> 3), 17);
+                                gpit = 1;
+                            }
 #else
-							player.objs ++;
-							peta_el_beeper (9);
+                            player.objs ++;
+                            peta_el_beeper (9);
 #endif
 							break;
 #endif
 #ifndef DEACTIVATE_KEYS
-						case 2:
-							player.keys ++;
-							peta_el_beeper (7);
-							break;
+                        case 2:
+                            player.keys ++;
+                            peta_el_beeper (7);
+                            break;
 #endif
+                        case 3:
+                            player.life += PLAYER_REFILL;
+                            if (player.life > PLAYER_LIFE)
+                                player.life = PLAYER_LIFE;
+                            peta_el_beeper (8);
+                            break;
 #ifdef MAX_AMMO
-						case 4:
-							if (MAX_AMMO - player.ammo > AMMO_REFILL)
-								player.ammo += AMMO_REFILL;
-							else 
-								player.ammo = MAX_AMMO;
-							peta_el_beeper (9);
-							break;
+                        case 4:
+                            if (MAX_AMMO - player.ammo > AMMO_REFILL)
+                                player.ammo += AMMO_REFILL;
+                            else
+                                player.ammo = MAX_AMMO;
+                            peta_el_beeper (9);
+                            break;
 #endif
-#ifdef TIMER_ENABLE
-						case 5:
-							if (99 - ctimer.t > TIMER_REFILL)
-								ctimer.t += TIMER_REFILL;
-							else
-								ctimer.t = 99;
-							peta_el_beeper (7);
-							break;
-#endif
-					}
-					hotspots [n_pant].act = gpit;
-				}
-				hotspot_x = hotspot_y = 240;
-			}
-			
+                    }
+                    hotspots [n_pant].act = gpit;
+                }
+                hotspot_x = hotspot_y = 240;
+            }
+
 			// Flick screen checks and scripting related stuff
 			gpit = (joyfunc) (&keys);
-			
-#ifdef ACTIVATE_SCRIPTING		
-#ifdef SCRIPTING_KEY_M			
+
+#ifdef ACTIVATE_SCRIPTING
+#ifdef SCRIPTING_KEY_M
 			if (sp_KeyPressed (key_m)) {
 #endif
 #ifdef SCRIPTING_DOWN
@@ -473,14 +464,14 @@ void do_game (void) {
 #endif
 
 			// Change screen
-#ifdef PLAYER_CHECK_MAP_BOUNDARIES		
+#ifdef PLAYER_CHECK_MAP_BOUNDARIES
 			if (player.x == 0 && player.vx < 0 && x_pant > 0) {
 				n_pant --;
 				x_pant --;
 				draw_scr ();
 				player.x = 14336;
 			}
-			if (player.x == 14336 && player.vx > 0 && x_pant < (MAP_W - 1)) {	
+			if (player.x == 14336 && player.vx > 0 && x_pant < (MAP_W - 1)) {
 				n_pant ++;
 				x_pant ++;
 				draw_scr ();
@@ -490,16 +481,16 @@ void do_game (void) {
 				n_pant -= MAP_W;
 				y_pant --;
 				draw_scr ();
-				player.y = 9216;	
+				player.y = 9216;
 			}
 			if (player.y == 9216 && player.vy > 0 && y_pant < (MAP_H - 1)) {
 				n_pant += MAP_W;
 				y_pant ++;
 				draw_scr ();
 				player.y = 0;
-				if (player.vy > 256) player.vy = 256;	
-			}		
-#else			
+				if (player.vy > 256) player.vy = 256;
+			}
+#else
 #ifdef PLAYER_AUTO_CHANGE_SCREEN
 			if (player.x == 0 && player.vx < 0) {
 				n_pant --;
@@ -514,7 +505,7 @@ void do_game (void) {
 #else
 			if (player.x == 0 && ((gpit & sp_LEFT) == 0)) {
 				n_pant --;
-				draw_scr ();	
+				draw_scr ();
 				player.x = 14336;
 			}
 			if (player.x == 14336 && ((gpit & sp_RIGHT) == 0)) {		// 14336 = 224 * 64
@@ -526,7 +517,7 @@ void do_game (void) {
 			if (player.y == 0 && player.vy < 0 && n_pant >= MAP_W) {
 				n_pant -= MAP_W;
 				draw_scr ();
-				player.y = 9216;	
+				player.y = 9216;
 			}
 			if (player.y == 9216 && player.vy > 0) {				// 9216 = 144 * 64
 				if (n_pant < MAP_W * MAP_H - MAP_W) {
@@ -536,19 +527,19 @@ void do_game (void) {
 					if (player.vy > 256) player.vy = 256;
 #ifdef MAP_BOTTOM_KILLS
 				} else {
-					player.vy = -PLAYER_MAX_VY_CAYENDO; 
+					player.vy = -PLAYER_MAX_VY_CAYENDO;
 					if (player.life > 0) {
 						peta_el_beeper (4);
-						player.life --; 
+						player.life --;
 					}
 #endif
 				}
 			}
-#endif			
+#endif
 			// Win game condition
 #ifdef ACTIVATE_SCRIPTING
 			if (player.objs == PLAYER_NUM_OBJETOS || script_result == 1) {
-#else			
+#else
 			if (player.objs == PLAYER_NUM_OBJETOS) {
 #endif
 				if (
@@ -556,10 +547,10 @@ void do_game (void) {
 					pant_final == 99
 				) {
 					success = 1;
-					playing = 0;					
+					playing = 0;
 				}
 			}
-			
+
 			// Game over condition
 			if (player.life == 0
 #ifdef ACTIVATE_SCRIPTING
@@ -569,13 +560,13 @@ void do_game (void) {
 				|| ctimer.zero
 #endif
 			) {
-				playing = 0;				
+				playing = 0;
 			}
 		}
-		
+
 		saca_a_todo_el_mundo_de_aqui ();
 		sp_UpdateNow ();
-		
+
 #ifdef COMPRESSED_LEVELS
 		if (success) {
 			level ++;

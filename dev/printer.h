@@ -103,17 +103,17 @@ void draw_coloured_tile (unsigned char x, unsigned char y, unsigned char t) {
 #endif
 
 void print_number2 (unsigned char x, unsigned char y, unsigned char number) {
-	sp_PrintAtInv (y, x, 7, 16 + (number / 10));
-	sp_PrintAtInv (y, x + 1, 7, 16 + (number % 10));
+	sp_PrintAtInv (y, x, 39, 16 + (number / 10));
+	sp_PrintAtInv (y, x + 1, 39, 16 + (number % 10));
 }
 
 #ifndef DEACTIVATE_OBJECTS
 void draw_objs () {
 #if defined(ONLY_ONE_OBJECT) && defined(ACTIVATE_SCRIPTING)
 	if (player.objs) {
-		draw_coloured_tile (OBJECTS_ICON_X, OBJECTS_ICON_Y, 13);
+		draw_coloured_tile (OBJECTS_ICON_X, OBJECTS_ICON_Y, 42);
 	} else {
-		draw_coloured_tile (OBJECTS_ICON_X, OBJECTS_ICON_Y, 12);
+		draw_coloured_tile (OBJECTS_ICON_X, OBJECTS_ICON_Y, 41);
 	}
 	print_number2 (OBJECTS_X, OBJECTS_Y, flags [OBJECT_COUNT]);
 #else
