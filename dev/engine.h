@@ -436,15 +436,21 @@ void fire_bullet (void) {
 			}
 #else
 			gpjt = (joyfunc) (&keys);
+#ifdef CAN_FIRE_UP
 			if (!(gpjt & sp_UP)) {
 				bullets [gpit].y = (player.y >> 6);
 				bullets [gpit].my = -PLAYER_BULLET_SPEED;
 			} else {
+#endif				
 				bullets [gpit].y = (player.y >> 6) + PLAYER_BULLET_Y_OFFSET;
 				bullets [gpit].my = 0;
+#ifdef CAN_FIRE_UP				
 			}
+#endif			
 
+#ifdef CAN_FIRE_UP
 			if (!(gpjt & sp_LEFT) || !(gpjt & sp_RIGHT) || (gpjt & sp_UP)) {
+#endif				
 				if (player.facing == 0) {
 					bullets [gpit].x = (player.x >> 6) - 4;
 					bullets [gpit].mx = -PLAYER_BULLET_SPEED;
@@ -452,10 +458,12 @@ void fire_bullet (void) {
 					bullets [gpit].x = (player.x >> 6) + 12;
 					bullets [gpit].mx = PLAYER_BULLET_SPEED;
 				}
+#ifdef CAN_FIRE_UP				
 			} else {
 				bullets [gpit].x = (player.x >> 6) + 4;
 				bullets [gpit].mx = 0;
 			}
+#endif
 #endif
 			peta_el_beeper (6);
 			break;
