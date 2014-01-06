@@ -47,3 +47,5 @@ Hilo oficial del juego en los foros de Mojon Twins: <http://www.mojontwins.com/m
 **Note:** Sinclair and Kempston joystick don't work correctly.
 
 **Nota:** Los joystick Sinclair y Kempston no funcionan correctamente.
+
+[Play online/Puedes jugar en linea en]<http://torinak.com/qaop#l=https://dl.dropboxusercontent.com/u/58286032/churrera/sami.tap>
