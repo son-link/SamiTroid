@@ -142,8 +142,6 @@
   <object gid="17" x="448" y="1200"/>
   <object name="501" type="2" gid="65" x="272" y="320"/>
   <object name="501" type="2" gid="67" x="448" y="320"/>
-  <object name="501" type="2" gid="67" x="384" y="144"/>
-  <object name="501" type="2" gid="67" x="448" y="144"/>
   <object name="503" type="4" gid="73" x="528" y="32"/>
   <object name="503" type="4" gid="75" x="656" y="80"/>
   <object name="503" type="4" gid="73" x="560" y="112"/>
@@ -159,7 +157,7 @@
   <object name="502" type="8" gid="69" x="1552" y="144"/>
   <object name="502" type="8" gid="71" x="1728" y="144"/>
   <object name="502" type="8" gid="69" x="1744" y="144"/>
-  <object name="502" type="8" gid="71" x="1584" y="144"/>
+  <object name="502" type="8" gid="71" x="1568" y="144"/>
   <object name="503" type="4" gid="73" x="1856" y="224"/>
   <object name="503" type="4" gid="75" x="1904" y="224"/>
   <object name="503" type="4" gid="73" x="1904" y="256"/>
@@ -183,17 +181,17 @@
   <object name="503" type="4" gid="73" x="1360" y="752"/>
   <object name="503" type="4" gid="75" x="1408" y="752"/>
   <object name="503" type="4" gid="73" x="1344" y="784"/>
-  <object name="503" type="4" gid="75" x="1424" y="816"/>
+  <object name="503" type="4" gid="75" x="1424" y="848"/>
   <object name="501" type="4" gid="65" x="1328" y="848"/>
   <object name="501" type="4" gid="67" x="1424" y="848"/>
   <object name="502" type="8" gid="69" x="1600" y="752"/>
   <object name="502" type="8" gid="71" x="1744" y="752"/>
   <object name="501" type="4" gid="65" x="1584" y="832"/>
   <object name="501" type="4" gid="67" x="1712" y="832"/>
-  <object name="503" type="4" gid="73" x="1856" y="576"/>
-  <object name="503" type="4" gid="75" x="1888" y="624"/>
-  <object name="503" type="4" gid="73" x="1888" y="576"/>
-  <object name="503" type="4" gid="75" x="1856" y="624"/>
+  <object name="503" type="4" gid="73" x="1840" y="576"/>
+  <object name="503" type="4" gid="75" x="1904" y="640"/>
+  <object name="503" type="4" gid="73" x="1904" y="576"/>
+  <object name="503" type="4" gid="75" x="1840" y="640"/>
   <object name="503" type="4" gid="73" x="96" y="960"/>
   <object name="503" type="4" gid="75" x="208" y="928"/>
   <object name="503" type="4" gid="73" x="64" y="992"/>
@@ -207,15 +205,15 @@
   <object name="503" type="4" gid="73" x="416" y="960"/>
   <object name="503" type="4" gid="75" x="320" y="1024"/>
   <object name="503" type="4" gid="73" x="128" y="240"/>
-  <object name="503" type="4" gid="75" x="128" y="272"/>
+  <object name="503" type="4" gid="75" x="208" y="272"/>
   <object name="502" type="4" gid="69" x="80" y="256"/>
   <object name="502" type="4" gid="71" x="112" y="256"/>
   <object name="503" type="4" gid="73" x="272" y="32"/>
   <object name="503" type="4" gid="75" x="304" y="80"/>
   <object name="502" type="4" gid="69" x="160" y="464"/>
   <object name="502" type="4" gid="71" x="208" y="464"/>
-  <object name="501" gid="65" x="96" y="368"/>
-  <object name="501" gid="67" x="112" y="368"/>
+  <object name="501" gid="65" x="96" y="432"/>
+  <object name="501" gid="67" x="128" y="432"/>
   <object name="502" type="4" gid="69" x="576" y="288"/>
   <object name="502" type="4" gid="71" x="576" y="240"/>
   <object name="502" type="4" gid="69" x="704" y="288"/>
@@ -227,7 +225,7 @@
   <object name="502" type="4" gid="69" x="592" y="448"/>
   <object name="502" type="4" gid="71" x="640" y="448"/>
   <object name="503" type="4" gid="73" x="640" y="400"/>
-  <object name="503" type="4" gid="75" x="688" y="400"/>
+  <object name="503" type="4" gid="75" x="720" y="400"/>
   <object name="503" type="4" gid="73" x="944" y="208"/>
   <object name="503" type="4" gid="75" x="880" y="272"/>
   <object name="503" type="4" gid="73" x="864" y="272"/>
@@ -244,8 +242,8 @@
   <object name="503" type="4" gid="73" x="1376" y="240"/>
   <object name="501" type="4" gid="65" x="368" y="800"/>
   <object name="501" type="4" gid="67" x="448" y="800"/>
-  <object name="503" type="8" gid="73" x="208" y="800"/>
-  <object name="503" type="8" gid="75" x="16" y="864"/>
+  <object name="503" type="4" gid="73" x="208" y="816"/>
+  <object name="503" type="4" gid="75" x="16" y="864"/>
   <object name="503" type="4" gid="73" x="144" y="1248"/>
   <object name="503" type="4" gid="75" x="208" y="1312"/>
   <object name="503" type="4" gid="73" x="96" y="1296"/>
@@ -269,12 +267,12 @@
   <object name="503" type="4" gid="73" x="400" y="1136"/>
   <object name="503" type="4" gid="75" x="336" y="1184"/>
   <object name="503" type="4" gid="73" x="576" y="1104"/>
-  <object name="503" type="4" gid="75" x="704" y="1104"/>
+  <object name="503" type="4" gid="75" x="720" y="1136"/>
   <object name="503" type="4" gid="73" x="656" y="1072"/>
-  <object name="503" type="4" gid="75" x="656" y="1136"/>
+  <object name="503" type="4" gid="75" x="672" y="1152"/>
   <object name="503" type="4" gid="73" x="784" y="1088"/>
-  <object name="503" type="4" gid="75" x="912" y="1120"/>
-  <object name="503" type="4" gid="73" x="832" y="1088"/>
+  <object name="503" type="4" gid="75" x="976" y="1120"/>
+  <object name="503" type="4" gid="73" x="992" y="1088"/>
   <object name="503" type="4" gid="75" x="832" y="1152"/>
   <object name="501" type="4" gid="65" x="848" y="1120"/>
   <object name="501" type="4" gid="67" x="848" y="1120"/>
@@ -282,7 +280,7 @@
   <object name="503" type="4" gid="75" x="1216" y="1136"/>
   <object name="503" type="4" gid="73" x="1120" y="1168"/>
   <object name="503" type="4" gid="75" x="1216" y="1104"/>
-  <object name="503" type="4" gid="73" x="1136" y="1248"/>
+  <object name="503" type="4" gid="73" x="1088" y="1248"/>
   <object name="503" type="4" gid="75" x="1216" y="1248"/>
   <object name="503" type="4" gid="73" x="1088" y="1264"/>
   <object name="503" type="4" gid="75" x="1168" y="1312"/>
@@ -318,69 +316,81 @@
   <object name="503" type="4" gid="75" x="1440" y="992"/>
   <object name="502" type="8" gid="69" x="1360" y="1264"/>
   <object name="502" type="8" gid="71" x="1488" y="1264"/>
-  <object name="503" type="8" gid="73" x="1328" y="1440"/>
+  <object name="503" type="8" gid="73" x="1344" y="1440"/>
   <object name="503" type="8" gid="75" x="1296" y="1472"/>
   <object name="502" gid="69" x="1360" y="1440"/>
   <object name="502" gid="71" x="1360" y="1440"/>
-  <object name="503" type="8" gid="73" x="1344" y="1120"/>
-  <object name="503" type="8" gid="75" x="1488" y="1120"/>
-  <object name="503" type="8" gid="73" x="1488" y="1120"/>
-  <object name="503" type="8" gid="75" x="1344" y="1120"/>
-  <object name="501" type="4" gid="65" x="1584" y="928"/>
+  <object name="503" type="4" gid="73" x="1344" y="1120"/>
+  <object name="503" type="4" gid="75" x="1488" y="1120"/>
+  <object name="503" type="4" gid="73" x="1488" y="1120"/>
+  <object name="503" type="4" gid="75" x="1344" y="1120"/>
+  <object name="501" type="4" gid="65" x="1552" y="928"/>
   <object name="501" type="4" gid="67" x="1728" y="928"/>
-  <object name="502" type="4" gid="69" x="1600" y="928"/>
-  <object name="502" type="4" gid="71" x="1744" y="928"/>
+  <object name="502" type="4" gid="69" x="1744" y="928"/>
+  <object name="502" type="4" gid="71" x="1568" y="928"/>
   <object name="503" type="4" gid="73" x="1872" y="912"/>
   <object name="503" type="4" gid="75" x="1968" y="944"/>
-  <object name="503" type="4" gid="73" x="1872" y="1024"/>
-  <object name="503" type="4" gid="75" x="2000" y="1024"/>
+  <object name="503" type="4" gid="73" x="1872" y="992"/>
+  <object name="503" type="4" gid="75" x="1952" y="992"/>
   <object name="501" type="4" gid="65" x="1632" y="1088"/>
   <object name="501" type="4" gid="67" x="1744" y="1088"/>
   <object name="502" type="8" gid="69" x="1872" y="1168"/>
   <object name="502" type="8" gid="71" x="1936" y="1168"/>
   <object name="503" type="4" gid="73" x="1920" y="1088"/>
-  <object name="503" type="4" gid="75" x="2000" y="1200"/>
+  <object name="503" type="4" gid="75" x="2000" y="1088"/>
   <object name="503" type="4" gid="73" x="1968" y="1200"/>
-  <object name="503" type="4" gid="75" x="1936" y="1104"/>
+  <object name="503" type="4" gid="75" x="2000" y="1088"/>
   <object name="503" type="4" gid="73" x="1392" y="1088"/>
   <object name="503" type="4" gid="75" x="1392" y="1200"/>
   <object name="503" type="4" gid="73" x="1344" y="1296"/>
   <object name="503" type="4" gid="75" x="1392" y="1360"/>
   <object name="503" type="4" gid="75" x="1344" y="1392"/>
   <object name="503" type="4" gid="73" x="1392" y="1312"/>
-  <object name="503" type="4" gid="73" x="1808" y="1264"/>
+  <object name="503" type="4" gid="73" x="1808" y="1280"/>
+  <object name="503" type="4" gid="75" x="1936" y="1280"/>
+  <object name="503" type="4" gid="73" x="1840" y="1312"/>
   <object name="503" type="4" gid="75" x="1936" y="1312"/>
-  <object name="503" type="4" gid="73" x="1808" y="1344"/>
-  <object name="503" type="4" gid="75" x="1936" y="1264"/>
   <object name="501" gid="65" x="1680" y="1280"/>
   <object name="501" gid="67" x="1680" y="1280"/>
   <object name="502" type="4" gid="69" x="1664" y="1312"/>
   <object name="502" type="4" gid="71" x="1744" y="1312"/>
-  <object name="503" type="4" gid="75" x="2000" y="1360"/>
-  <object name="503" type="4" gid="75" x="2000" y="1248"/>
   <object name="503" type="8" gid="73" x="1904" y="1440"/>
   <object name="503" type="8" gid="75" x="1904" y="1504"/>
   <object name="503" type="8" gid="73" x="1984" y="1520"/>
   <object name="503" type="8" gid="75" x="1984" y="1440"/>
   <object name="502" type="8" gid="71" x="1984" y="1488"/>
   <object name="502" type="8" gid="69" x="1984" y="1488"/>
-  <object name="503" type="8" gid="73" x="1536" y="1456"/>
+  <object name="503" type="8" gid="73" x="1536" y="1520"/>
   <object name="503" type="8" gid="75" x="1760" y="1552"/>
-  <object name="503" type="8" gid="73" x="1760" y="1456"/>
+  <object name="503" type="8" gid="73" x="1760" y="1520"/>
   <object name="503" type="8" gid="75" x="1536" y="1552"/>
-  <object name="501" type="8" gid="65" x="1552" y="1552"/>
-  <object name="501" type="8" gid="67" x="1744" y="1552"/>
-  <object name="502" type="8" gid="69" x="1296" y="1552"/>
-  <object name="502" type="8" gid="71" x="1488" y="1552"/>
-  <object name="503" type="8" gid="73" x="1184" y="1440"/>
-  <object name="503" type="8" gid="75" x="1232" y="1472"/>
-  <object name="503" type="8" gid="73" x="1232" y="1440"/>
-  <object name="503" type="8" gid="75" x="1184" y="1472"/>
-  <object name="503" type="8" gid="73" x="1136" y="1440"/>
-  <object name="503" type="8" gid="75" x="1136" y="1552"/>
-  <object name="503" type="4" gid="73" x="128" y="272"/>
-  <object name="503" type="4" gid="75" x="128" y="240"/>
+  <object name="501" type="4" gid="65" x="1552" y="1552"/>
+  <object name="501" type="4" gid="67" x="1744" y="1552"/>
+  <object name="502" type="4" gid="69" x="1296" y="1552"/>
+  <object name="502" type="4" gid="71" x="1488" y="1552"/>
+  <object name="503" type="4" gid="73" x="1104" y="1440"/>
+  <object name="503" type="4" gid="75" x="1232" y="1472"/>
+  <object name="503" type="4" gid="73" x="1232" y="1440"/>
+  <object name="503" type="4" gid="75" x="1104" y="1472"/>
+  <object name="503" type="4" gid="73" x="1136" y="1440"/>
+  <object name="503" type="4" gid="75" x="1136" y="1552"/>
+  <object name="503" type="4" gid="73" x="208" y="240"/>
+  <object name="503" type="4" gid="75" x="128" y="272"/>
   <object name="503" type="4" gid="73" x="416" y="32"/>
   <object name="503" type="4" gid="75" x="272" y="96"/>
+  <object name="502" type="4" gid="69" x="352" y="256"/>
+  <object name="502" type="4" gid="71" x="400" y="256"/>
+  <object name="502" type="4" gid="69" x="400" y="224"/>
+  <object name="502" type="4" gid="71" x="352" y="224"/>
+  <object name="503" type="4" gid="73" x="48" y="80"/>
+  <object name="503" type="4" gid="75" x="208" y="64"/>
+  <object name="502" type="4" gid="69" x="16" y="128"/>
+  <object name="502" type="4" gid="71" x="80" y="144"/>
+  <object name="501" type="4" gid="65" x="64" y="144"/>
+  <object name="501" type="4" gid="67" x="32" y="144"/>
+  <object name="503" type="4" gid="73" x="2000" y="1248"/>
+  <object name="503" type="4" gid="75" x="2000" y="1360"/>
+  <object name="501" type="4" gid="65" x="384" y="144"/>
+  <object name="501" type="4" gid="67" x="464" y="144"/>
  </objectgroup>
 </map>
