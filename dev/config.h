@@ -64,7 +64,7 @@
 //#define ENABLE_CUSTOM_TYPE_6			// If defined, add code to type 6 enemies.
 //#define TYPE_6_FIXED_SPRITE 	2		// Sprite used - 1.
 //#define SIGHT_DISTANCE			96	// Used in our type 6 enemies.
-#define USE_TWO_BUTTONS				// Alternate keyboard scheme for two-buttons games
+//#define USE_TWO_BUTTONS				// Alternate keyboard scheme for two-buttons games
 
 // Pushable tile
 // -------------

@@ -60,11 +60,11 @@ void do_game (void) {
 	key_jump   = sp_LookupKey('n');
 	key_fire   = keys.fire;
 #else
-	keys.up    = sp_LookupKey('q');
-	keys.down  = sp_LookupKey('a');
-	keys.left  = sp_LookupKey('o');
-	keys.right = sp_LookupKey('p');
-	keys.fire  = sp_LookupKey(' ');
+	keys.up    = sp_LookupKey('n');
+	keys.down  = sp_LookupKey('s');
+	keys.left  = sp_LookupKey('a');
+	keys.right = sp_LookupKey('d');
+	keys.fire  = sp_LookupKey('m');
 #endif
 #ifdef SCRIPTING_KEY_M
 	key_m = sp_LookupKey ('m');

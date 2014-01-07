@@ -38,14 +38,14 @@ Hilo oficial del juego en los foros de Mojon Twins: <http://www.mojontwins.com/m
 
 ##Controls/Controles:
 
-* A: Left/Izquierda
-* C: Right/Derecha
-* S: Action/Acción
-* N: Jump/Salto
-* M: Shoot/Disparo
+* A, Left/Izquierda: Left/Izquierda
+* C, Right/Derecha: Right/Derecha
+* S, Down/Abajo: Action/Acción
+* N, Up/Arriba: Jump/Salto
+* M, Fire/Fuego: Shoot/Disparo
 
 **Note:** Sinclair and Kempston joystick don't work correctly.
 
 **Nota:** Los joystick Sinclair y Kempston no funcionan correctamente.
 
-[Play online/Puedes jugar en linea en]<http://torinak.com/qaop#l=https://dl.dropboxusercontent.com/u/58286032/churrera/sami.tap>
+[Play online/Jugar en linea](http://torinak.com/qaop#l=https://dl.dropboxusercontent.com/u/58286032/churrera/sami.tap)
