@@ -44,8 +44,4 @@ Hilo oficial del juego en los foros de Mojon Twins: <http://www.mojontwins.com/m
 * N, Up/Arriba: Jump/Salto
 * M, Fire/Fuego: Shoot/Disparo
 
-**Note:** Sinclair and Kempston joystick don't work correctly.
-
-**Nota:** Los joystick Sinclair y Kempston no funcionan correctamente.
-
 [Play online/Jugar en linea](http://torinak.com/qaop#l=https://dl.dropboxusercontent.com/u/58286032/churrera/sami.tap)
