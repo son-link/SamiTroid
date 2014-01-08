@@ -19,6 +19,15 @@ I recommend [Fuse Emulator](http://fuse-emulator.sourceforge.net/) for playing g
 
 Game thread in Mojon Twins forums (only spanish): <http://www.mojontwins.com/mojoniaplus/viewtopic.php?f=9&t=1325>
 
+##Credits:
+**Programming:** Son Link
+
+**Grafics:** Son Link (tiles, sprites) & Radastan (laod and final screens)
+
+**Music:** Davidian (title screen)
+
+**Thanks:** To Mojon Twins for the Churrera and these greats tutorials published in El Mundo del Spectrum, the forum in general of the mojones for your help and support, and all of you who have downloaded my first game.
+
 ##Español
 Un juego fan de **Metroid** para Zx Spectrum 48k creado con [La Churrera](http://www.mojontwins.com/juegos_mojonos/la-churrera/) de The Mojon Twins
 
@@ -35,6 +44,17 @@ Bajo licencia [Creative Commons 3.0 BY-NC-SA](http://creativecommons.org/license
 Recomiendo [Fuse Emulator](http://fuse-emulator.sourceforge.net/) para jugar al juego en GNU/Linux, Windows, Mac y otras plataformas y [ZXDS](http://zxds.raxoft.cz/) para jugar en la Nintendo DS
 
 Hilo oficial del juego en los foros de Mojon Twins: <http://www.mojontwins.com/mojoniaplus/viewtopic.php?f=9&t=1325>
+
+##Créditos:
+
+**Programación:** Son Link
+
+**Graficos:** Son Link (tiles, sprites) y Radastan (pantalla carga y final)
+
+**Música:**
+Davidian (pantalla titulo)
+
+**Agradecimientos:** A los Mojon Twins por la Churrera y esos estupendos tutoriales publicados en El Mundo del Spectrum, al foro en general de los mojones por su ayuda y apoyo, y todos los que os habéis bajado mi primer juego.
 
 ##Controls/Controles:
 
