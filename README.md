@@ -4,7 +4,7 @@
 
 A **Metroid** fan game for Zx Spectrum 48k make with [La Churrera](http://www.mojontwins.com/juegos_mojonos/la-churrera/) by The Mojon Twins
 
-You are Sami Troid, a spacial bodyhunter. The spacecraft XZ-388 is under attack. Your mission: destroy the enemies and recover the last eggs of many especies of a dying planet.
+You are Sami Troid, a space bodyhunter. The spacecraft XZ-388 is under attack. Your mission: destroy the enemies and recover the last eggs of many especies of a dying planet.
 
 Howto play:  
 You'll have to walk the ship for 14 eggs and take them to the incubator. You can only carry one at a time. To leave just press the **Action button (S) ** when in the incubator. Once you have the 14 eggs you can access the control room to take the ship to its destination
@@ -22,7 +22,7 @@ Game thread in Mojon Twins forums (only spanish): <http://www.mojontwins.com/moj
 ##Credits:
 **Programming:** Son Link
 
-**Grafics:** Son Link (tiles, sprites) & Radastan (laod and final screens)
+**Grafics:** Son Link (tiles, sprites) & Radastan (loading and final screens)
 
 **Music:** Davidian (title screen)
 
