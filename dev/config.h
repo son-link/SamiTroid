@@ -15,7 +15,7 @@
 #define SCR_INICIO				1		// Initial screen
 #define PLAYER_INI_X			7		//
 #define PLAYER_INI_Y			8		// Initial tile coordinates
-#define SCR_FIN 				0		// Last screen. 99 = deactivated.
+#define SCR_FIN 				36		// Last screen. 99 = deactivated.
 #define PLAYER_FIN_X			3		//
 #define PLAYER_FIN_Y			8		// Player tile coordinates to finish game
 #define PLAYER_NUM_OBJETOS		0		// Objects to get to finish game
@@ -30,7 +30,7 @@
 // ============================================================================
 
 // This section is used to define the game engine behaviour. Many directives are related,
-// and others are mutually exclusive. I think this will be pretty obvious when you look at them. 
+// and others are mutually exclusive. I think this will be pretty obvious when you look at them.
 
 // Right now the shooting engine is only compatible with the side-view engine.
 
@@ -83,7 +83,7 @@
 // ------------------
 
 #define PLAYER_CAN_FIRE 				// If defined, shooting engine is enabled.
-#define PLAYER_BULLET_SPEED 	8		// Pixels/frame. 
+#define PLAYER_BULLET_SPEED 	8		// Pixels/frame.
 #define MAX_BULLETS 			3		// Max number of bullets on screen. Be careful!.
 #define PLAYER_BULLET_Y_OFFSET	6		// vertical offset from the player's top.
 #define PLAYER_BULLET_X_OFFSET	0		// vertical offset from the player's left/right.
@@ -160,14 +160,14 @@
 #define LIFE_Y						22		// Life gauge counter character coordinates
 #define OBJECTS_X				16		//
 #define OBJECTS_Y				22		// Objects counter character coordinates
-#define OBJECTS_ICON_X			14		// 
+#define OBJECTS_ICON_X			14		//
 #define OBJECTS_ICON_Y			21		// Objects icon character coordinates (use with ONLY_ONE_OBJECT)
 #define KEYS_X					21	//
 #define KEYS_Y					22		// Keys counter character coordinates
 #define KILLED_X				99		//
 #define KILLED_Y				99		// Kills counter character coordinates
 //#define PLAYER_SHOW_KILLS				// If defined, show kill counter.
-#define AMMO_X					99		// 
+#define AMMO_X					99		//
 #define AMMO_Y					99		// Ammo counter character coordinates
 #define TIMER_X					99		//
 #define TIMER_Y					99		// Timer counter coordinates
@@ -184,7 +184,7 @@
 //#define USE_AUTO_TILE_SHADOWS			// Automatic shadows using specially defined tiles 32-47.
 #define UNPACKED_MAP					// Full, uncompressed maps. Shadows settings are ignored.
 //#define NO_MASKS						// Sprites are rendered using OR instead of masks.
-//#define PLAYER_ALTERNATE_ANIMATION	// If defined, animation is 1,2,3,1,2,3... 
+//#define PLAYER_ALTERNATE_ANIMATION	// If defined, animation is 1,2,3,1,2,3...
 //#define MASKED_BULLETS					// If needed
 //#define ENABLE_TILANIMS			32	// If defined, animated tiles are enabled.
 										// the value especifies firt animated tile pair.

@@ -18,7 +18,7 @@ unsigned char *f_scripts [] = {
 #asm
 ._mscce_0
 
-    defb 0x07, 0xF0, 0xFF, 0x20, 0x00, 0x03, 0x00, 0xFF, 0xFF
+    defb 0x09, 0x10, 0x01, 0x0E, 0xFF, 0x20, 0x00, 0x03, 0x00, 0xFF, 0xFF
 
 ._mscce_1
 
@@ -72,6 +72,13 @@ void run_script (void) {
         while (!terminado) {
             c = read_byte ();
             switch (c) {
+                case 0x10:
+                    // IF FLAG x = n
+                    // Opcode: 10 x n
+                    x = read_vbyte ();
+                    n = read_vbyte ();
+                    terminado = (flags [x] != n);
+                    break;
                 case 0x12:
                     // IF FLAG x > n
                     // Opcode: 12 x n
@@ -97,10 +104,6 @@ void run_script (void) {
                      // IF PLAYER_HAS_OBJECTS
                      // Opcode: 40
                      terminado = (player.objs == 0);
-                     break;
-                case 0xF0:
-                     // IF TRUE
-                     // Opcode: F0
                      break;
                 case 0xFF:
                     // THEN
