@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Script bash para calcular el valor de un atributo de color
+
+if [ $# == 3 ]; then
+	COLOR=$[$1+8*$2+64*$3]
+	echo "El valor del atributo de color es $COLOR"
+else
+	echo "Modo de uso:"
+	echo "$0 INK PAPER BRIGHT"
+fi

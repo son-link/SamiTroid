@@ -7,12 +7,12 @@ void attr (char x, char y) {
 #else
 	if (x < 0 || y < 0) return 8;
 #endif
-	return map_attr [x + (y << 4) - y];
+	return map_attr [x + (y << 4) - y];	
 }
 
 void qtile (unsigned char x, unsigned char y) {
 	// x + 15 * y = x + (16 - 1) * y = x + 16 * y - y = x + (y << 4) - y.
-	return map_buff [x + (y << 4) - y];
+	return map_buff [x + (y << 4) - y];	
 }
 
 #ifdef UNPACKED_MAP
@@ -26,7 +26,7 @@ void draw_coloured_tile (unsigned char x, unsigned char y, unsigned char t) {
 	sp_PrintAtInv (y, x, pointer [0], t);
 	sp_PrintAtInv (y, x + 1, pointer [1], t + 1);
 	sp_PrintAtInv (y + 1, x, pointer [2], t + 2);
-	sp_PrintAtInv (y + 1, x + 1, pointer [3], t + 3);
+	sp_PrintAtInv (y + 1, x + 1, pointer [3], t + 3);	
 }
 
 #else
@@ -39,10 +39,10 @@ void draw_coloured_tile (unsigned char x, unsigned char y, unsigned char t) {
 	unsigned char *pointer_alt;
 	unsigned char t_alt;
 #endif
-
+	
 #ifdef USE_AUTO_SHADOWS
 	xx = (x - VIEWPORT_X) >> 1;
-	yy = (y - VIEWPORT_Y) >> 1;
+	yy = (y - VIEWPORT_Y) >> 1;	
 	if (!(attr (xx, yy) & 8) && (t < 16 || t == 19)) {
 		t = 64 + (t << 2);
 		pointer = (unsigned char *) &tileset [2048 + t];
@@ -55,7 +55,7 @@ void draw_coloured_tile (unsigned char x, unsigned char y, unsigned char t) {
 
 #ifdef USE_AUTO_TILE_SHADOWS
 	xx = (x - VIEWPORT_X) >> 1;
-	yy = (y - VIEWPORT_Y) >> 1;
+	yy = (y - VIEWPORT_Y) >> 1;	
 	if (!(attr (xx, yy) & 8) && (t < 16 || t == 19)) {
 		t = 64 + (t << 2);
 		if (t == 140) {
@@ -67,7 +67,7 @@ void draw_coloured_tile (unsigned char x, unsigned char y, unsigned char t) {
 			t_alt = 128 + t;
 			pointer_alt = (unsigned char *) &tileset [2048 + t + 128];
 		}
-
+		
 		if (attr (xx - 1, yy - 1) & 8) {
 			sp_PrintAtInv (y, x, pointer_alt [0], t_alt);
 		} else {
@@ -82,7 +82,7 @@ void draw_coloured_tile (unsigned char x, unsigned char y, unsigned char t) {
 			sp_PrintAtInv (y + 1, x, pointer_alt [2], t_alt + 2);
 		} else {
 			sp_PrintAtInv (y + 1, x, pointer [2], t + 2);
-		}
+		} 
 		sp_PrintAtInv (y + 1, x + 1, pointer [3], t + 3);
 	} else {
 #endif
@@ -104,16 +104,16 @@ void draw_coloured_tile (unsigned char x, unsigned char y, unsigned char t) {
 
 void print_number2 (unsigned char x, unsigned char y, unsigned char number) {
 	sp_PrintAtInv (y, x, 39, 16 + (number / 10));
-	sp_PrintAtInv (y, x + 1, 39, 16 + (number % 10));
+	sp_PrintAtInv (y, x + 1,39, 16 + (number % 10));
 }
 
 #ifndef DEACTIVATE_OBJECTS
 void draw_objs () {
 #if defined(ONLY_ONE_OBJECT) && defined(ACTIVATE_SCRIPTING)
-	if (player.objs) {
-		draw_coloured_tile (OBJECTS_ICON_X, OBJECTS_ICON_Y, 42);
-	} else {
-		draw_coloured_tile (OBJECTS_ICON_X, OBJECTS_ICON_Y, 41);
+	if (player.objs) {
+		draw_coloured_tile (OBJECTS_ICON_X, OBJECTS_ICON_Y, 42);
+	} else {
+		draw_coloured_tile (OBJECTS_ICON_X, OBJECTS_ICON_Y, 41);
 	}
 	print_number2 (OBJECTS_X, OBJECTS_Y, flags [OBJECT_COUNT]);
 #else
@@ -129,7 +129,7 @@ void print_str (unsigned char x, unsigned char y, unsigned char c, unsigned char
 }
 
 #ifdef COMPRESSED_LEVELS
-void blackout_area () {
+void blackout_area (void) {
 	// blackens gameplay area for LEVEL XX display
 	asm_int [0] = 22528 + 32 * VIEWPORT_Y + VIEWPORT_X;
 	#asm
@@ -139,7 +139,7 @@ void blackout_area () {
 		inc	hl
 		ld	a, (hl)
 		ld	d, a
-
+		
 		ld b, 20
 	.bal1
 		push bc
@@ -152,7 +152,7 @@ void blackout_area () {
 		inc de
 		inc de
 		pop bc
-		djnz bal1
+		djnz bal1	
 	#endasm
 }
 #endif

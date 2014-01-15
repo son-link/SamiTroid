@@ -63,5 +63,7 @@ Davidian (pantalla titulo)
 * S, Down/Abajo: Action/Acción
 * N, Up/Arriba: Jump/Salto
 * M, Fire/Fuego: Shoot/Disparo
+* H, Pause game/Pausar juego
+* Y, Finish game/Finalizar juego
 
 [Play online/Jugar en linea](http://torinak.com/qaop#l=https://dl.dropboxusercontent.com/u/58286032/churrera/sami.tap)

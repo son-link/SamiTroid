@@ -5,16 +5,16 @@
 
 // Frames extra por si se pueden eliminar los enemigos:
 
-#if defined(PLAYER_CAN_FIRE) || defined(PLAYER_KILLS_ENEMIES) || defined(ENABLE_PURSUERS)
-extern unsigned char sprite_17_a [];
+#if defined(PLAYER_CAN_FIRE) || defined(PLAYER_KILLS_ENEMIES) || defined(ENABLE_PURSUERS) || defined (MODE_128K)
+extern unsigned char sprite_17_a []; 
 #endif
-extern unsigned char sprite_18_a [];
-#ifdef PLAYER_CAN_FIRE
+extern unsigned char sprite_18_a []; 
+#if defined(PLAYER_CAN_FIRE) || defined (MODE_128K)
 extern unsigned char sprite_19_a [];
 extern unsigned char sprite_19_b [];
 #endif
 
-#if defined(PLAYER_CAN_FIRE) || defined(PLAYER_KILLS_ENEMIES) || defined(ENABLE_PURSUERS)
+#if defined(PLAYER_CAN_FIRE) || defined(PLAYER_KILLS_ENEMIES) || defined(ENABLE_PURSUERS) || defined (MODE_128K)
 #asm
     ._sprite_17_a
         defb 0, 128
@@ -41,7 +41,7 @@ extern unsigned char sprite_19_b [];
         defb 0, 255
         defb 0, 255
         defb 0, 255
-
+ 
     ._sprite_17_b
         defb 0, 3
         defb 240, 1
@@ -67,7 +67,7 @@ extern unsigned char sprite_19_b [];
         defb 0, 255
         defb 0, 255
         defb 0, 255
-
+ 
     ._sprite_17_c
         defb 0, 255
         defb 0, 255
@@ -104,7 +104,7 @@ extern unsigned char sprite_19_b [];
 		defb 0, 255, 0, 255, 0, 255, 0, 255
 		defb 0, 255, 0, 255, 0, 255, 0, 255
 		defb 0, 255, 0, 255, 0, 255, 0, 255
-
+		
 	._sprite_18_b
 		defb 0, 255, 0, 255, 0, 255, 0, 255
 		defb 0, 255, 0, 255, 0, 255, 0, 255
@@ -112,7 +112,7 @@ extern unsigned char sprite_19_b [];
 		defb 0, 255, 0, 255, 0, 255, 0, 255
 		defb 0, 255, 0, 255, 0, 255, 0, 255
 		defb 0, 255, 0, 255, 0, 255, 0, 255
-
+		
 	._sprite_18_c
 		defb 0, 255, 0, 255, 0, 255, 0, 255
 		defb 0, 255, 0, 255, 0, 255, 0, 255
@@ -122,26 +122,26 @@ extern unsigned char sprite_19_b [];
 		defb 0, 255, 0, 255, 0, 255, 0, 255
 #endasm
 
-#ifdef PLAYER_CAN_FIRE
-#asm
+#if defined(PLAYER_CAN_FIRE) || defined (MODE_128K)
+#asm	              	
 	._sprite_19_a
-		defb @00000000, 0
-		defb @00000000, 0
-		defb @00000000, 0
-		defb @11111111, 0
-		defb @11111111, 0
-		defb @00000000, 0
-		defb @00000000, 0
-		defb @00000000, 255
+		defb @00000000, 0
+		defb @00000000, 0
+		defb @00000000, 0
+		defb @11111111, 0
+		defb @11111111, 0
+		defb @00000000, 0
+		defb @00000000, 0
+		defb @00000000, 255
+		defb 0, 255
+		defb 0, 255
+		defb 0, 255
+		defb 0, 255
+		defb 0, 255
+		defb 0, 255
+		defb 0, 255
 		defb 0, 255
-		defb 0, 255
-		defb 0, 255
-		defb 0, 255
-		defb 0, 255
-		defb 0, 255
-		defb 0, 255
-		defb 0, 255
-
+	
 	._sprite_19_b
 		defb 0, 255
 		defb 0, 255

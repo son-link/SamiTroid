@@ -6,20 +6,19 @@
 extern unsigned char mscce_0 [];
 extern unsigned char mscce_1 [];
 extern unsigned char msccf_0 [];
-extern unsigned char msccf_1 [];
  
 unsigned char *e_scripts [] = {
     0, mscce_0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, mscce_1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
  
 unsigned char *f_scripts [] = {
-    msccf_1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, msccf_0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, msccf_0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
  
 #asm
 ._mscce_0
 
-    defb 0x09, 0x10, 0x01, 0x0E, 0xFF, 0x20, 0x00, 0x03, 0x00, 0xFF, 0xFF
+    defb 0x07, 0xF0, 0xFF, 0x20, 0x00, 0x03, 0x00, 0xFF, 0xFF
 
 ._mscce_1
 
@@ -28,10 +27,6 @@ unsigned char *f_scripts [] = {
 ._msccf_0
 
     defb 0x0E, 0x21, 0x70, 0x8F, 0x22, 0x80, 0x9F, 0x40, 0xFF, 0x41, 0x01, 0x10, 0x01, 0x01, 0xFF, 0xFF
-
-._msccf_1
-
-    defb 0x09, 0x21, 0x30, 0x4F, 0x22, 0x80, 0x9F, 0xFF, 0xF1, 0xFF, 0xFF
 
 #endasm
  
@@ -77,13 +72,6 @@ void run_script (void) {
         while (!terminado) {
             c = read_byte ();
             switch (c) {
-                case 0x10:
-                    // IF FLAG x = n
-                    // Opcode: 10 x n
-                    x = read_vbyte ();
-                    n = read_vbyte ();
-                    terminado = (flags [x] != n);
-                    break;
                 case 0x12:
                     // IF FLAG x > n
                     // Opcode: 12 x n
@@ -109,6 +97,10 @@ void run_script (void) {
                      // IF PLAYER_HAS_OBJECTS
                      // Opcode: 40
                      terminado = (player.objs == 0);
+                     break;
+                case 0xF0:
+                     // IF TRUE
+                     // Opcode: F0
                      break;
                 case 0xFF:
                     // THEN
@@ -147,10 +139,6 @@ void run_script (void) {
                         n = read_vbyte ();
                         player.objs -= n;
                         draw_objs ();
-                        break;
-                    case 0xF1:
-                        script_result = 1;
-                        terminado = 1;
                         break;
                     case 0xFF:
                         terminado = 1;
