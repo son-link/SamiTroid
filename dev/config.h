@@ -12,7 +12,7 @@
 
 #define MAP_W					8		//
 #define MAP_H					9		// Map dimmensions in screens
-#define SCR_INICIO				1		// Initial screen
+#define SCR_INICIO				36		// Initial screen
 #define PLAYER_INI_X			7		//
 #define PLAYER_INI_Y			8		// Initial tile coordinates
 #define SCR_FIN 				36		// Last screen. 99 = deactivated.
@@ -87,7 +87,7 @@
 #define MAX_BULLETS 			3		// Max number of bullets on screen. Be careful!.
 #define PLAYER_BULLET_Y_OFFSET	6		// vertical offset from the player's top.
 #define PLAYER_BULLET_X_OFFSET	0		// vertical offset from the player's left/right.
-#define ENEMIES_LIFE_GAUGE	2			// Amount of shots needed to kill enemies.
+#define ENEMIES_LIFE_GAUGE		2			// Amount of shots needed to kill enemies.
 #define RESPAWN_ON_ENTER				// Enemies respawn when entering screen
 //#define FIRE_MIN_KILLABLE 	3		// If defined, only enemies >= N can be killed.
 //#define CAN_FIRE_UP						// If defined, player can fire upwards and diagonal.
@@ -111,7 +111,7 @@
 //#define SCRIPTING_KEY_M			// Use M as the action key instead.
 //#define SCRIPTING_KEY_FIRE		// User FIRE as the action key instead.
 //#define ENABLE_EXTERN_CODE		// Enables custom code to be run from the script using EXTERN n
-#define ENABLE_FIRE_ZONE			// Allows to define a zone which auto-triggers "FIRE"
+//#define ENABLE_FIRE_ZONE			// Allows to define a zone which auto-triggers "FIRE"
 
 // Timer
 // -----
@@ -156,8 +156,8 @@
 
 #define VIEWPORT_X				1		//
 #define VIEWPORT_Y				0		// Viewport character coordinates
-#define LIFE_X						11		//
-#define LIFE_Y						22		// Life gauge counter character coordinates
+#define LIFE_X					11		//
+#define LIFE_Y					22		// Life gauge counter character coordinates
 #define OBJECTS_X				16		//
 #define OBJECTS_Y				22		// Objects counter character coordinates
 #define OBJECTS_ICON_X			14		//

@@ -4,9 +4,9 @@
 
 A **Metroid** fan game for Zx Spectrum 48k make with [La Churrera](http://www.mojontwins.com/juegos_mojonos/la-churrera/) by The Mojon Twins
 
-You are Sami Troid, a spacial bodyhunter. The spacecraft XZ-388 is under attack. Your mission: destroy the enemies and recover the last eggs of many especies of a dying planet.
+You are Sami Troid, a space bodyhunter. The spacecraft XZ-388 is under attack. Your mission: destroy the enemies and recover the last eggs of many especies of a dying planet.
 
-Howto play:  
+Howto play:
 You'll have to walk the ship for 14 eggs and take them to the incubator. You can only carry one at a time. To leave just press the **Action button (S) ** when in the incubator. Once you have the 14 eggs you can access the control room to take the ship to its destination
 
 (c) 2013 Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
@@ -22,7 +22,7 @@ Game thread in Mojon Twins forums (only spanish): <http://www.mojontwins.com/moj
 ##Credits:
 **Programming:** Son Link
 
-**Grafics:** Son Link (tiles, sprites) & Radastan (laod and final screens)
+**Grafics:** Son Link (tiles, sprites) & Radastan (loading and final screens)
 
 **Music:** Davidian (title screen)
 
@@ -33,7 +33,7 @@ Un juego fan de **Metroid** para Zx Spectrum 48k creado con [La Churrera](http:/
 
 Tu eres Sami Troid, una caza recompensas espacial. La nave espacial ZX-388 esta siendo atacada. Tu misión: destruir a los enemigos y recuperar los últimos huevos de varias especies de un planeta moribundo.
 
-Como jugar: Deberás recorrer la nave en busca de los 14 huevos y llevarlos hasta la incubadora. Solo puedes llevar uno a la vez. Para dejarlos solo pulsa el botón de **Acción (S)** cuando estés en la incubadora. Una vez que tengas los 14 huevos podrás acceder a la sala de mandos para llevar la nave hasta su destino. 
+Como jugar: Deberás recorrer la nave en busca de los 14 huevos y llevarlos hasta la incubadora. Solo puedes llevar uno a la vez. Para dejarlos solo pulsa el botón de **Acción (S)** cuando estés en la incubadora. Una vez que tengas los 14 huevos podrás acceder a la sala de mandos para llevar la nave hasta su destino.
 
 (c) 2013 Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
@@ -63,7 +63,5 @@ Davidian (pantalla titulo)
 * S, Down/Abajo: Action/Acción
 * N, Up/Arriba: Jump/Salto
 * M, Fire/Fuego: Shoot/Disparo
-* H, Pause game/Pausar juego
-* Y, Finish game/Finalizar juego
 
 [Play online/Jugar en linea](http://torinak.com/qaop#l=https://dl.dropboxusercontent.com/u/58286032/churrera/sami.tap)

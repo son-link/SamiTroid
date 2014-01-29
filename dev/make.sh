@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 NAME=sami
 FORMAT=tap
 if [ $# -eq 2 ] && [ $1 == '-f' ]; then

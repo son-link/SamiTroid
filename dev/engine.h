@@ -303,9 +303,9 @@ void game_ending (void) {
 
 unsigned char *spacer = "            ";
 void game_over (void) {
-	print_str (10, 11, 122, spacer);
+	print_str (10, 11, 87, spacer);
 	print_str (10, 12, 87, " GAME OVER! ");
-	print_str (10, 13, 122, spacer);
+	print_str (10, 13, 87, spacer);
 	sp_UpdateNow ();
 
 #ifdef MODE_128K
@@ -343,7 +343,7 @@ void time_over (void) {
 #ifdef PAUSE_ABORT
 void pause_screen (void) {
 	print_str (10, 11, 79, spacer);
-	print_str (10, 12, 124, "   PAUSED   ");
+	print_str (10, 12, 79, "   PAUSED   ");
 	print_str (10, 13, 79, spacer);
 	sp_UpdateNow ();
 }
