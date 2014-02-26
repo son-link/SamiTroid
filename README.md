@@ -22,11 +22,11 @@ Game thread in Mojon Twins forums (only spanish): <http://www.mojontwins.com/moj
 ##Credits:
 **Programming:** Son Link
 
-**Grafics:** Son Link (tiles, sprites) & Radastan (loading and final screens)
+**Grafics:** Son Link (tiles, sprites), Radastan (loading and final screens) and Jarlaxe (sprites)
 
 **Music:** Davidian (title screen)
 
-**Thanks:** To Mojon Twins for the Churrera and these greats tutorials published in El Mundo del Spectrum, the forum in general of the mojones for your help and support, and all of you who have downloaded my first game.
+**Thanks:** To Mojon Twins for the Churrera and these greats tutorials published in El Mundo del Spectrum, the forum in general of the mojones for your help and support, my aunt Jaki and Ailin for her help to translate the english manual, to Speccy forum user, Hidoki, and all of you who have downloaded my first game.
 
 ##Español
 Un juego fan de **Metroid** para Zx Spectrum 48k creado con [La Churrera](http://www.mojontwins.com/juegos_mojonos/la-churrera/) de The Mojon Twins
@@ -49,12 +49,12 @@ Hilo oficial del juego en los foros de Mojon Twins: <http://www.mojontwins.com/m
 
 **Programación:** Son Link
 
-**Graficos:** Son Link (tiles, sprites) y Radastan (pantalla carga y final)
+**Graficos:** Son Link (tiles, sprites), Radastan (pantalla carga y final) y Jarlaxe (sprites)
 
 **Música:**
 Davidian (pantalla titulo)
 
-**Agradecimientos:** A los Mojon Twins por la Churrera y esos estupendos tutoriales publicados en El Mundo del Spectrum, al foro en general de los mojones por su ayuda y apoyo, y todos los que os habéis bajado mi primer juego.
+**Agradecimientos:** A los Mojon Twins por la Churrera y esos estupendos tutoriales publicados en El Mundo del Spectrum, al foro en general de los mojones por su ayuda y apoyo, a mi tíaJaky y Aili por ayudarme en la traducción al ingles del manual, al usuario del foro de Speccy, Hidoki, y todos los que os habéis bajado mi primer juego.
 
 ##Controls/Controles:
 
@@ -65,3 +65,10 @@ Davidian (pantalla titulo)
 * M, Fire/Fuego: Shoot/Disparo
 
 [Play online/Jugar en linea](http://torinak.com/qaop#l=https://dl.dropboxusercontent.com/u/58286032/churrera/sami.tap)
+
+##Herramientas usadas para la creación del juego/Tools used for make the game:
+Efectos de sonido/Sounds FX [Sound FX](http://www.worldofspectrum.org/infoseekid.cgi?id=0011124)
+Gráficos/Grafics: [GIMP](http://www.gimp.org/)
+Música/Music: [Beepola](http://freestuff.grok.co.uk/beepola)
+Edición de código/Code edition: [Genay](http://www.geany.org)
+Manuales/Manuals: [LibreOffice](http://www.libreoffice.org)

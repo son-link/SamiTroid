@@ -1,10 +1,20 @@
-# Título tonto
-# Copyleft 201X tu grupo roneón soft.
-# Churrera 3.1
+# Sami Troid
+# Copyleft 2014 Alfonso Saavedra "Son Link"
+# Churrera 3.99.3b
 
 # flags:
-# 1	- La cantidad de huevos que hemos llevado hasta el criadero
-# 2 - Nivel de seguridad de la llave actual
+# 1	- La cantidad de huevos que hemos llevado hasta la incubadora
+
+ENTERING SCREEN 35
+	IF FLAG 1 > 9
+	THEN
+		SET TILE (8, 7) = 44
+	END
+	IF FLAG 1 = 14
+	THEN
+		SET TILE (8, 7) = 45
+	END
+END
 
 PRESS_FIRE ON SCREEN 35
 	IF PLAYER_IN_X 112, 143
@@ -13,7 +23,16 @@ PRESS_FIRE ON SCREEN 35
     THEN
        DEC OBJECTS 1
        INC FLAG 1, 1
+       SOUND 5
     END
+    IF FLAG 1 > 9
+	THEN
+		SET TILE (8, 7) = 44
+	END
+	IF FLAG 1 = 14
+	THEN
+		SET TILE (8, 7) = 45
+	END
 END
 
 ENTERING SCREEN 1
@@ -31,9 +50,9 @@ ENTERING SCREEN 42
 END
 
 PRESS_FIRE ON SCREEN 0
-	IF PLAYER_IN_X 112, 143
-    IF PLAYER_IN_Y 48, 79
+	IF FLAG 10 = 1
+	IF PLAYER_TOUCHES 3, 8
     THEN
-       WIN GAME
-    END
+		WIN GAME
+	END
 END

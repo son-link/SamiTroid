@@ -1,4 +1,7 @@
 #!/bin/bash -e
+if [ -f title.bin ]; then
+	rm title.bin ending.bin loading.bin
+fi
 NAME=sami
 FORMAT=tap
 if [ $# -eq 2 ] && [ $1 == '-f' ]; then
@@ -30,7 +33,7 @@ echo -e "\e[32mRegenerando mapa\e[0m"
 ../utils/tmxcnv ../map/sami.tmx mapa.h enems.h
 
 echo -e "\e[32mCompilando juego\e[0m"
-zcc +zx -vn $NAME.c -o $NAME.bin -lndos -lsplib2 -zorg=24200 -no-cleanup
+zcc +zx -vn $NAME.c -o $NAME.bin -lndos -lsplib2 -zorg=24200
 # Si fallo la compilación salimos del script sin continuar con el proceso
 if [ $? -ne 0 ]; then
 	exit

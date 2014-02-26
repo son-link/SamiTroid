@@ -409,22 +409,26 @@ void init_bullets (void) {
 
 #ifndef COMPRESSED_LEVELS
 #if defined(PLAYER_KILLS_ENEMIES) || defined (PLAYER_CAN_FIRE)
-#ifndef MODE_128K
+
 void init_malotes (void) {
 	gpit = 0;
 	while (gpit < MAP_W * MAP_H * 3) {
 		malotes [gpit].t = malotes [gpit].t & 15;
-#ifdef PLAYER_CAN_FIRE
-		malotes [gpit].life = ENEMIES_LIFE_GAUGE;
-#ifdef ENABLE_RANDOM_RESPAWN
+		#ifdef PLAYER_CAN_FIRE
+
+		if (malotes [gpit].t == 4) {
+			malotes [gpit].life = 16;
+		}
+
+			#ifdef ENABLE_RANDOM_RESPAWN
 		if (malotes [gpit].t == 5)
 			malotes [gpit].t |= 16;
-#endif
-#endif
+			#endif
+		#endif
 		gpit ++;
 	}
 }
-#endif
+
 #endif
 #endif
 
@@ -476,19 +480,25 @@ void fire_bullet (void) {
 			}
 #else
 			gpjt = (joyfunc) (&keys);
+
+#ifdef CAN_FIRE_UP
 			if (!(gpjt & sp_UP)) {
 				bullets [gpit].y = (player.y >> 6);
 				bullets [gpit].my = -PLAYER_BULLET_SPEED;
 			} else if (!(gpjt & sp_DOWN)) {
 				bullets [gpit].y = 8 + (player.y >> 6);
 				bullets [gpit].my = PLAYER_BULLET_SPEED;
-			}
-			if ((gpjt & sp_UP) && (gpjt & sp_DOWN)) {
+			} else {
+#endif
 				bullets [gpit].y = (player.y >> 6) + PLAYER_BULLET_Y_OFFSET;
 				bullets [gpit].my = 0;
+#ifdef CAN_FIRE_UP
 			}
+#endif
 
+#ifdef CAN_FIRE_UP
 			if (!(gpjt & sp_LEFT) || !(gpjt & sp_RIGHT) || ((gpjt & sp_UP) && (gpjt & sp_DOWN))) {
+#endif
 				if (player.facing == 0) {
 					bullets [gpit].x = (player.x >> 6) - 4;
 					bullets [gpit].mx = -PLAYER_BULLET_SPEED;
@@ -496,10 +506,12 @@ void fire_bullet (void) {
 					bullets [gpit].x = (player.x >> 6) + 12;
 					bullets [gpit].mx = PLAYER_BULLET_SPEED;
 				}
+#ifdef CAN_FIRE_UP
 			} else {
 				bullets [gpit].x = (player.x >> 6) + 4;
 				bullets [gpit].mx = 0;
 			}
+#endif
 #endif
 #ifdef MODE_128K
 			wyz_play_sound (4);
@@ -1410,21 +1422,25 @@ void __FASTCALL__ draw_scr (void) {
 	for (gpit = 0; gpit < 3; gpit ++) {
 		en_an [gpit].frame = 0;
 		en_an [gpit].count = 3;
+		en_an [gpit].state = 0;
 #ifdef ENABLE_RANDOM_RESPAWN
 		en_an [gpit].fanty_activo = 0;
 #endif
+
 #ifdef RESPAWN_ON_ENTER
 		// Back to life!
-
-		malotes [enoffs + gpit].t &= 0xEF;
+		if ((malotes [enoffs + gpit].t & 0xEF) != 4) {
+			malotes [enoffs + gpit].t &= 0xEF;
 #ifdef PLAYER_CAN_FIRE
-#ifdef MODE_128K
-		malotes [enoffs + gpit].life = level_data.enems_life;
+#if defined (COMPRESSED_LEVELS) && defined (MODE_128K)
+			malotes [enoffs + gpit].life = level_data.enems_life;
 #else
-		malotes [enoffs + gpit].life = ENEMIES_LIFE_GAUGE;
+			malotes [enoffs + gpit].life = ENEMIES_LIFE_GAUGE;
 #endif
 #endif
+		}
 #endif
+
 		switch (malotes [enoffs + gpit].t) {
 			case 1:
 			case 2:
@@ -1625,6 +1641,16 @@ void mueve_bicharracos (void) {
 #ifdef ENABLE_RANDOM_RESPAWN
 		if (en_an [gpit].fanty_activo) gpt = 5;
 #endif
+
+		if (en_an [gpit].state == GENERAL_DYING) {
+			en_an [gpit].count --;
+			if (en_an [gpit].count == 0) {
+				en_an [gpit].state = 0;
+				en_an [gpit].next_frame = sprite_18_a;
+				continue;
+			}
+		}
+
 		switch (gpt) {
 			case 1:
 			case 2:
@@ -1771,8 +1797,10 @@ void mueve_bicharracos (void) {
 				}
 				break;
 #endif
+/*
 			default:
-				en_an [gpit].next_frame = sprite_18_a;
+				if (en_an [gpit].state != GENERAL_DYING) en_an [gpit].next_frame = sprite_18_a;
+*/
 		}
 
 		if (active) {
@@ -1786,6 +1814,7 @@ void mueve_bicharracos (void) {
 
 			// Collide with player
 
+/*
 #ifndef PLAYER_MOGGY_STYLE
 			// Platforms
 			if (malotes [enoffsmasi].t == 4) {
@@ -1889,23 +1918,34 @@ void mueve_bicharracos (void) {
 				}
 			} else if (!tocado && collide (gpx, gpy, gpen_cx, gpen_cy) && player.estado == EST_NORMAL) {
 #else
+*/
 			if (!tocado && collide (gpx, gpy, gpen_cx, gpen_cy) && player.estado == EST_NORMAL) {
-#endif
+//#endif
 #ifdef PLAYER_KILLS_ENEMIES
 				// Step over enemy
 				if (gpy < gpen_cy - 2 && player.vy >= 0 && malotes [enoffsmasi].t >= PLAYER_MIN_KILLABLE) {
+
+#ifdef MODE_128K
+					wyz_play_sound (6);
+					en_an [gpit].state = GENERAL_DYING;
+					en_an [gpit].count = 12;
+					en_an [gpit].next_frame = sprite_17_a;
+					malotes [enoffsmasi].t |= 16;			// Mark as dead
+					player.killed ++;
+					player.vy = -256;
+
+#else
 					en_an [gpit].next_frame = sprite_17_a;
 					sp_MoveSprAbs (sp_moviles [gpit], spritesClip, en_an [gpit].next_frame - en_an [gpit].current_frame, VIEWPORT_Y + (gpen_cy >> 3), VIEWPORT_X + (gpen_cx >> 3), gpen_cx & 7, gpen_cy & 7);
 					en_an [gpit].current_frame = en_an [gpit].next_frame;
 					sp_UpdateNow ();
-#ifdef MODE_128K
-					wyz_play_sound (6);
-#else
-					peta_el_beeper (5);
-#endif
+
+					peta_el_beeper (0);
 					en_an [gpit].next_frame = sprite_18_a;
 					malotes [enoffsmasi].t |= 16;			// Mark as dead
+
 					player.killed ++;
+#endif
 #ifdef ACTIVATE_SCRIPTING
 					// Run this screen fire script or "entering any".
 					script = f_scripts [n_pant];
@@ -1914,6 +1954,8 @@ void mueve_bicharracos (void) {
 					run_script ();
 #endif
 				} else if (player.life > 0) {
+
+
 #else
 				if (player.life > 0) {
 #endif
@@ -1991,7 +2033,7 @@ void mueve_bicharracos (void) {
 							en_an [gpit].morido = 1;
 							bullets [gpjt].estado = 0;
 #ifndef PLAYER_MOGGY_STYLE
-							if (malotes [enoffsmasi].t != 4) malotes [enoffsmasi].life --;
+							/*if (malotes [enoffsmasi].t != 4)*/ malotes [enoffsmasi].life --;
 #else
 							malotes [enoffsmasi].life --;
 #endif
@@ -2005,7 +2047,7 @@ void mueve_bicharracos (void) {
 								#endasm
 								wyz_play_sound (6);
 #else
-								peta_el_beeper (5);
+								peta_el_beeper (0);
 #endif
 								en_an [gpit].next_frame = sprite_18_a;
 								if (gpt != 7) malotes [enoffsmasi].t |= 16;

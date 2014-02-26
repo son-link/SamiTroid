@@ -15,10 +15,10 @@
 #define SCR_INICIO				36		// Initial screen
 #define PLAYER_INI_X			7		//
 #define PLAYER_INI_Y			8		// Initial tile coordinates
-#define SCR_FIN 				36		// Last screen. 99 = deactivated.
-#define PLAYER_FIN_X			3		//
-#define PLAYER_FIN_Y			8		// Player tile coordinates to finish game
-#define PLAYER_NUM_OBJETOS		0		// Objects to get to finish game
+#define SCR_FIN 				99		// Last screen. 99 = deactivated.
+#define PLAYER_FIN_X			99		//
+#define PLAYER_FIN_Y			99		// Player tile coordinates to finish game
+#define PLAYER_NUM_OBJETOS		99		// Objects to get to finish game
 #define PLAYER_LIFE 			30		// Max and starting life gauge.
 #define PLAYER_REFILL			5		// Life recharge
 //#define COMPRESSED_LEVELS				// use levels.h instead of mapa.h and enems.h (!)
@@ -52,8 +52,8 @@
 #define ONLY_ONE_OBJECT				// If defined, only one object can be carried at a time.
 #define OBJECT_COUNT			1		// Defines which FLAG will be used to store the object count.
 #define DEACTIVATE_EVIL_TILE			// If defined, no killing tiles (behaviour 1) are detected.
-//#define FULL_BOUNCE						// If defined, evil tile bounces equal MAX_VX, otherwise v/2
-//#define PLAYER_BOUNCES				// If defined, collisions make player bounce
+#define FULL_BOUNCE						// If defined, evil tile bounces equal MAX_VX, otherwise v/2
+#define PLAYER_BOUNCES				// If defined, collisions make player bounce
 //#define SLOW_DRAIN					// Works with bounces. Drain is 4 times slower
 #define PLAYER_FLICKERS 			 	// If defined, collisions make player flicker instead.
 //#define MAP_BOTTOM_KILLS				// If defined, exiting the map bottomwise kills.
@@ -63,7 +63,7 @@
 //#define DEATH_COUNT_EXPRESSION	20+(rand()&15)
 //#define TYPE_7_FIXED_SPRITE 	4		// If defined, type 7 enemies are always #
 //#define ENABLE_CUSTOM_TYPE_6			// If defined, add code to type 6 enemies.
-//#define TYPE_6_FIXED_SPRITE 	2		// Sprite used - 1.
+//#define TYPE_6_FIXED_SPRITE 	3		// Sprite used - 1.
 //#define SIGHT_DISTANCE			104		// Used in our type 6 enemies.
 //#define USE_TWO_BUTTONS					// Alternate keyboard scheme for two-buttons games
 #define USE_HOTSPOTS_TYPE_3				// Alternate logic for recharges.
@@ -236,9 +236,9 @@
 // Save for 10 (special), but that's obvious, innit?
 #ifndef COMPRESSED_LEVELS
 unsigned char comportamiento_tiles [] = {
-	0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0, 0, 4, 4, 10,
+	0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0, 4, 4, 4, 10,
 	0, 0, 0, 0, 0, 8, 0, 8, 8, 8, 8, 8, 8, 8, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0
 };
 #endif
 
