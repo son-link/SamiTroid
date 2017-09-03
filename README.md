@@ -65,9 +65,9 @@ Hilo oficial del juego en los foros de Mojon Twins: <http://www.mojontwins.com/m
 
 [Play online/Jugar en linea](http://torinak.com/qaop#l=https://dl.dropboxusercontent.com/u/58286032/churrera/sami.tap)
 
-##Herramientas usadas para la creación del juego/Tools used for make the game:
-Efectos de sonido/Sounds FX [Sound FX](http://www.worldofspectrum.org/infoseekid.cgi?id=0011124)
-Gráficos/Grafics: [GIMP](http://www.gimp.org/)
-Música/Music: [Beepola](http://freestuff.grok.co.uk/beepola)
-Edición de código/Code edition: [Genay](http://www.geany.org)
-Manuales/Manuals: [LibreOffice](http://www.libreoffice.org)
+## Herramientas usadas para la creación del juego/Tools used for make the game:
+* Efectos de sonido/Sounds FX [Sound FX](http://www.worldofspectrum.org/infoseekid.cgi?id=0011124)
+* Gráficos/Grafics: [GIMP](http://www.gimp.org/)
+* Música/Music: [Beepola](http://freestuff.grok.co.uk/beepola)
+* Edición de código/Code edition: [Genay](http://www.geany.org)
+* Manuales/Manuals: [LibreOffice](http://www.libreoffice.org)
