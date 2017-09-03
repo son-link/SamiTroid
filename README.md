@@ -1,6 +1,6 @@
-#Sami Troid
+# Sami Troid
 
-##English
+## English
 
 A **Metroid** fan game for Zx Spectrum 48k make with [La Churrera](http://www.mojontwins.com/juegos_mojonos/la-churrera/) by The Mojon Twins
 
@@ -19,7 +19,7 @@ I recommend [Fuse Emulator](http://fuse-emulator.sourceforge.net/) for playing g
 
 Game thread in Mojon Twins forums (only spanish): <http://www.mojontwins.com/mojoniaplus/viewtopic.php?f=9&t=1325>
 
-##Credits:
+## Credits:
 **Programming:** Son Link
 
 **Grafics:** Son Link (tiles, sprites), Radastan (loading and final screens) and Jarlaxe (sprites)
@@ -28,7 +28,7 @@ Game thread in Mojon Twins forums (only spanish): <http://www.mojontwins.com/moj
 
 **Thanks:** To Mojon Twins for the Churrera and these greats tutorials published in El Mundo del Spectrum, the forum in general of the mojones for your help and support, my aunt Jaki and Ailin for her help to translate the english manual, to Speccy forum user, Hidoki, and all of you who have downloaded my first game.
 
-##Español
+## Español
 Un juego fan de **Metroid** para Zx Spectrum 48k creado con [La Churrera](http://www.mojontwins.com/juegos_mojonos/la-churrera/) de The Mojon Twins
 
 Tu eres Sami Troid, una caza recompensas espacial. La nave espacial ZX-388 esta siendo atacada. Tu misión: destruir a los enemigos y recuperar los últimos huevos de varias especies de un planeta moribundo.
@@ -45,14 +45,13 @@ Recomiendo [Fuse Emulator](http://fuse-emulator.sourceforge.net/) para jugar al 
 
 Hilo oficial del juego en los foros de Mojon Twins: <http://www.mojontwins.com/mojoniaplus/viewtopic.php?f=9&t=1325>
 
-##Créditos:
+## Créditos:
 
 **Programación:** Son Link
 
 **Graficos:** Son Link (tiles, sprites), Radastan (pantalla carga y final) y Jarlaxe (sprites)
 
-**Música:**
-Davidian (pantalla titulo)
+**Música:** Davidian (pantalla titulo)
 
 **Agradecimientos:** A los Mojon Twins por la Churrera y esos estupendos tutoriales publicados en El Mundo del Spectrum, al foro en general de los mojones por su ayuda y apoyo, a mi tíaJaky y Aili por ayudarme en la traducción al ingles del manual, al usuario del foro de Speccy, Hidoki, y todos los que os habéis bajado mi primer juego.
 
