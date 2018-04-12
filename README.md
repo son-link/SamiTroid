@@ -55,7 +55,7 @@ Hilo oficial del juego en los foros de Mojon Twins: <http://www.mojontwins.com/m
 
 **Agradecimientos:** A los Mojon Twins por la Churrera y esos estupendos tutoriales publicados en El Mundo del Spectrum, al foro en general de los mojones por su ayuda y apoyo, a mi tíaJaky y Aili por ayudarme en la traducción al ingles del manual, al usuario del foro de Speccy, Hidoki, y todos los que os habéis bajado mi primer juego.
 
-##Controls/Controles:
+## Controls/Controles:
 
 * A, Left/Izquierda: Left/Izquierda
 * C, Right/Derecha: Right/Derecha
